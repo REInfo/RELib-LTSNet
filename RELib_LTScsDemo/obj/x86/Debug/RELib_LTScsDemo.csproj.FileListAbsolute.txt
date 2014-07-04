@@ -1,0 +1,7 @@
+D:\Work\RELib-LTScs\RELib_LTScsDemo\bin\Debug\RELib_LTScsDemo.exe.config
+D:\Work\RELib-LTScs\RELib_LTScsDemo\obj\x86\Debug\RELib_LTScsDemo.csprojResolveAssemblyReference.cache
+D:\Work\RELib-LTScs\RELib_LTScsDemo\obj\x86\Debug\RELib_LTScsDemo.LoginWin.resources
+D:\Work\RELib-LTScs\RELib_LTScsDemo\obj\x86\Debug\RELib_LTScsDemo.LTSDemo.resources
+D:\Work\RELib-LTScs\RELib_LTScsDemo\obj\x86\Debug\RELib_LTScsDemo.LTSMarketDemo.resources
+D:\Work\RELib-LTScs\RELib_LTScsDemo\obj\x86\Debug\RELib_LTScsDemo.Properties.Resources.resources
+D:\Work\RELib-LTScs\RELib_LTScsDemo\obj\x86\Debug\RELib_LTScsDemo.csproj.GenerateResource.Cache

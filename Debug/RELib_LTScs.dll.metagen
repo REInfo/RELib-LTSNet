@@ -1,0 +1,1956 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly RELib_LTScs, Version=1.0.*, Culture=固定语言(固定国家/地区): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class RELib_LTScs.SecurityFtdcRspInfoField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 ErrorID : Public
+    System.String ErrorMsg : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcExchangeField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String ExchangeName : Public, HasFieldMarshal
+    RELib_LTScs.EnumExchangePropertyType ExchangeProperty : Public
+Class RELib_LTScs.SecurityFtdcProductField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ProductID : Public, HasFieldMarshal
+    System.String ProductName : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    RELib_LTScs.EnumProductClassType ProductClass : Public
+    Int32 VolumeMultiple : Public
+    Double PriceTick : Public
+    Int32 MaxMarketOrderVolume : Public
+    Int32 MinMarketOrderVolume : Public
+    Int32 MaxLimitOrderVolume : Public
+    Int32 MinLimitOrderVolume : Public
+    RELib_LTScs.EnumPositionTypeType PositionType : Public
+    RELib_LTScs.EnumPositionDateTypeType PositionDateType : Public
+    Int32 EFTMinTradeVolume : Public
+Class RELib_LTScs.SecurityFtdcInstrumentField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String InstrumentName : Public, HasFieldMarshal
+    System.String ExchangeInstID : Public, HasFieldMarshal
+    System.String ProductID : Public, HasFieldMarshal
+    RELib_LTScs.EnumProductClassType ProductClass : Public
+    Int32 DeliveryYear : Public
+    Int32 DeliveryMonth : Public
+    Int32 MaxMarketOrderVolume : Public
+    Int32 MinMarketOrderVolume : Public
+    Int32 MaxLimitOrderVolume : Public
+    Int32 MinLimitOrderVolume : Public
+    Int32 VolumeMultiple : Public
+    Double PriceTick : Public
+    System.String CreateDate : Public, HasFieldMarshal
+    System.String OpenDate : Public, HasFieldMarshal
+    System.String ExpireDate : Public, HasFieldMarshal
+    System.String StartDelivDate : Public, HasFieldMarshal
+    System.String EndDelivDate : Public, HasFieldMarshal
+    RELib_LTScs.EnumInstLifePhaseType InstLifePhase : Public
+    Int32 IsTrading : Public
+    RELib_LTScs.EnumPositionTypeType PositionType : Public
+    Int32 OrderCanBeWithdraw : Public
+    Int32 MinBuyVolume : Public
+    Int32 MinSellVolume : Public
+    System.String RightModelID : Public, HasFieldMarshal
+    RELib_LTScs.EnumPosTradeTypeType PosTradeType : Public
+    System.String MarketID : Public, HasFieldMarshal
+    Double ExecPrice : Public
+    Double UnderlyingPreclosPrice : Public
+    Double OptionParam1 : Public
+    Double OptionParam2 : Public
+    Double UnitMargin : Public
+Class RELib_LTScs.SecurityFtdcTraderField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String BranchPBU : Public, HasFieldMarshal
+    System.String ParticipantID : Public, HasFieldMarshal
+    System.String Password : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String StartOrderLocalID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcBrokerField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String BrokerAbbr : Public, HasFieldMarshal
+    System.String BrokerName : Public, HasFieldMarshal
+    Int32 IsActive : Public
+Class RELib_LTScs.SecurityFtdcPartBrokerField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String ParticipantID : Public, HasFieldMarshal
+    Int32 IsActive : Public
+Class RELib_LTScs.SecurityFtdcInvestorField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorGroupID : Public, HasFieldMarshal
+    System.String InvestorName : Public, HasFieldMarshal
+    RELib_LTScs.EnumIdCardTypeType IdentifiedCardType : Public
+    System.String IdentifiedCardNo : Public, HasFieldMarshal
+    Int32 IsActive : Public
+    System.String SHBranchID : Public, HasFieldMarshal
+    System.String SZBranchID : Public, HasFieldMarshal
+    Double TotalBalance : Public
+Class RELib_LTScs.SecurityFtdcTradingCodeField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String ClientID : Public, HasFieldMarshal
+    Int32 IsActive : Public
+    System.String AccountID : Public, HasFieldMarshal
+    System.String PBU : Public, HasFieldMarshal
+    RELib_LTScs.EnumClientTypeType ClientType : Public
+Class RELib_LTScs.SecurityFtdcSuperUserField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String UserID : Public, HasFieldMarshal
+    System.String UserName : Public, HasFieldMarshal
+    System.String Password : Public, HasFieldMarshal
+    Int32 IsActive : Public
+Class RELib_LTScs.SecurityFtdcSuperUserFunctionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String UserID : Public, HasFieldMarshal
+    RELib_LTScs.EnumFunctionCodeType FunctionCode : Public
+Class RELib_LTScs.SecurityFtdcBrokerUserField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    System.String UserName : Public, HasFieldMarshal
+    RELib_LTScs.EnumUserTypeType UserType : Public
+    Int32 IsActive : Public
+    Int32 IsUsingOTP : Public
+Class RELib_LTScs.SecurityFtdcBrokerUserFunctionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    RELib_LTScs.EnumBrokerFunctionCodeType BrokerFunctionCode : Public
+Class RELib_LTScs.SecurityFtdcTradingAccountField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String AccountID : Public, HasFieldMarshal
+    Double PreMortgage : Public
+    Double PreCredit : Public
+    Double PreDeposit : Public
+    Double PreBalance : Public
+    Double PreMargin : Public
+    Double InterestBase : Public
+    Double Interest : Public
+    Double Deposit : Public
+    Double Withdraw : Public
+    Double FrozenMargin : Public
+    Double FrozenCash : Public
+    Double FrozenCommission : Public
+    Double CurrMargin : Public
+    Double MaintainMargin : Public
+    Double CashIn : Public
+    Double Commission : Public
+    Double Balance : Public
+    Double Available : Public
+    Double WithdrawQuota : Public
+    Double Reserve : Public
+    System.String TradingDay : Public, HasFieldMarshal
+    Int32 SettlementID : Public
+    Double Credit : Public
+    Double Mortgage : Public
+    Double ExchangeMargin : Public
+    Double DeliveryMargin : Public
+    Double ExchangeDeliveryMargin : Public
+    Double FrozenTransferFee : Public
+    Double FrozenStampTax : Public
+    Double TransferFee : Public
+    Double StampTax : Public
+    Double ConversionAmount : Public
+    Double CreditAmount : Public
+    Double StockValue : Public
+    Double BondRepurchaseAmount : Public
+    Double ReverseRepurchaseAmount : Public
+    System.String CurrencyCode : Public, HasFieldMarshal
+    RELib_LTScs.EnumAccountTypeType AccountType : Public
+    Double OptionBuyAmount : Public
+    Double OptionBuyFrozenAmount : Public
+Class RELib_LTScs.SecurityFtdcLoginForbiddenUserField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcDepthMarketDataField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String TradingDay : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String ExchangeInstID : Public, HasFieldMarshal
+    Double LastPrice : Public
+    Double PreSettlementPrice : Public
+    Double PreClosePrice : Public
+    Double PreOpenInterest : Public
+    Double OpenPrice : Public
+    Double HighestPrice : Public
+    Double LowestPrice : Public
+    Int32 Volume : Public
+    Double Turnover : Public
+    Double OpenInterest : Public
+    Double ClosePrice : Public
+    Double SettlementPrice : Public
+    Double UpperLimitPrice : Public
+    Double LowerLimitPrice : Public
+    Double PreDelta : Public
+    Double CurrDelta : Public
+    System.String UpdateTime : Public, HasFieldMarshal
+    Int32 UpdateMillisec : Public
+    Double BidPrice1 : Public
+    Int32 BidVolume1 : Public
+    Double AskPrice1 : Public
+    Int32 AskVolume1 : Public
+    Double BidPrice2 : Public
+    Int32 BidVolume2 : Public
+    Double AskPrice2 : Public
+    Int32 AskVolume2 : Public
+    Double BidPrice3 : Public
+    Int32 BidVolume3 : Public
+    Double AskPrice3 : Public
+    Int32 AskVolume3 : Public
+    Double BidPrice4 : Public
+    Int32 BidVolume4 : Public
+    Double AskPrice4 : Public
+    Int32 AskVolume4 : Public
+    Double BidPrice5 : Public
+    Int32 BidVolume5 : Public
+    Double AskPrice5 : Public
+    Int32 AskVolume5 : Public
+    Double AveragePrice : Public
+    System.String ActionDay : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcInstrumentTradingRightField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String InstrumentID : Public, HasFieldMarshal
+    RELib_LTScs.EnumInvestorRangeType InvestorRange : Public
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    RELib_LTScs.EnumDirectionType Direction : Public
+    RELib_LTScs.EnumTradingRightType TradingRight : Public
+    System.String ExchangeID : Public, HasFieldMarshal
+    RELib_LTScs.EnumInstrumentRangeType InstrumentRange : Public
+Class RELib_LTScs.SecurityFtdcInvestorPositionDetailField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    RELib_LTScs.EnumHedgeFlagType HedgeFlag : Public
+    RELib_LTScs.EnumDirectionType Direction : Public
+    System.String OpenDate : Public, HasFieldMarshal
+    System.String TradeID : Public, HasFieldMarshal
+    Int32 Volume : Public
+    Double OpenPrice : Public
+    System.String TradingDay : Public, HasFieldMarshal
+    Int32 SettlementID : Public
+    RELib_LTScs.EnumTradeTypeType TradeType : Public
+    System.String ExchangeID : Public, HasFieldMarshal
+    Double Margin : Public
+    Double ExchMargin : Public
+    Double LastSettlementPrice : Public
+    Double SettlementPrice : Public
+    Int32 CloseVolume : Public
+    Double CloseAmount : Public
+    Double TransferFee : Public
+    Double StampTax : Public
+    Double Commission : Public
+    System.String AccountID : Public, HasFieldMarshal
+    Int32 IsCall : Public
+    System.String UnderLyingInstrumentID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcBondInterestField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String TradingDay : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+    Double Interest : Public
+Class RELib_LTScs.SecurityFtdcTraderOfferField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String BranchPBU : Public, HasFieldMarshal
+    System.String ParticipantID : Public, HasFieldMarshal
+    System.String Password : Public, HasFieldMarshal
+    System.String OrderLocalID : Public, HasFieldMarshal
+    RELib_LTScs.EnumTraderConnectStatusType TraderConnectStatus : Public
+    System.String ConnectRequestDate : Public, HasFieldMarshal
+    System.String ConnectRequestTime : Public, HasFieldMarshal
+    System.String LastReportDate : Public, HasFieldMarshal
+    System.String LastReportTime : Public, HasFieldMarshal
+    System.String ConnectDate : Public, HasFieldMarshal
+    System.String ConnectTime : Public, HasFieldMarshal
+    System.String StartDate : Public, HasFieldMarshal
+    System.String StartTime : Public, HasFieldMarshal
+    System.String TradingDay : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcMDTraderOfferField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String BranchPBU : Public, HasFieldMarshal
+    System.String ParticipantID : Public, HasFieldMarshal
+    System.String Password : Public, HasFieldMarshal
+    System.String OrderLocalID : Public, HasFieldMarshal
+    RELib_LTScs.EnumTraderConnectStatusType TraderConnectStatus : Public
+    System.String ConnectRequestDate : Public, HasFieldMarshal
+    System.String ConnectRequestTime : Public, HasFieldMarshal
+    System.String LastReportDate : Public, HasFieldMarshal
+    System.String LastReportTime : Public, HasFieldMarshal
+    System.String ConnectDate : Public, HasFieldMarshal
+    System.String ConnectTime : Public, HasFieldMarshal
+    System.String StartDate : Public, HasFieldMarshal
+    System.String StartTime : Public, HasFieldMarshal
+    System.String TradingDay : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcFrontStatusField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 FrontID : Public
+    System.String LastReportDate : Public, HasFieldMarshal
+    System.String LastReportTime : Public, HasFieldMarshal
+    Int32 IsActive : Public
+Class RELib_LTScs.SecurityFtdcUserSessionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 FrontID : Public
+    Int32 SessionID : Public
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    System.String LoginDate : Public, HasFieldMarshal
+    System.String LoginTime : Public, HasFieldMarshal
+    System.String IPAddress : Public, HasFieldMarshal
+    System.String UserProductInfo : Public, HasFieldMarshal
+    System.String InterfaceProductInfo : Public, HasFieldMarshal
+    System.String ProtocolInfo : Public, HasFieldMarshal
+    System.String MacAddress : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcOrderField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String OrderRef : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    RELib_LTScs.EnumOrderPriceTypeType OrderPriceType : Public
+    RELib_LTScs.EnumDirectionType Direction : Public
+    System.String CombOffsetFlag : Public, HasFieldMarshal
+    System.String CombHedgeFlag : Public, HasFieldMarshal
+    System.String LimitPrice : Public, HasFieldMarshal
+    Int32 VolumeTotalOriginal : Public
+    RELib_LTScs.EnumTimeConditionType TimeCondition : Public
+    System.String GTDDate : Public, HasFieldMarshal
+    RELib_LTScs.EnumVolumeConditionType VolumeCondition : Public
+    Int32 MinVolume : Public
+    RELib_LTScs.EnumContingentConditionType ContingentCondition : Public
+    Double StopPrice : Public
+    RELib_LTScs.EnumForceCloseReasonType ForceCloseReason : Public
+    Int32 IsAutoSuspend : Public
+    System.String BusinessUnit : Public, HasFieldMarshal
+    Int32 RequestID : Public
+    System.String OrderLocalID : Public, HasFieldMarshal
+    System.String ParticipantID : Public, HasFieldMarshal
+    System.String ClientID : Public, HasFieldMarshal
+    System.String ExchangeInstID : Public, HasFieldMarshal
+    System.String BranchPBU : Public, HasFieldMarshal
+    Int32 InstallID : Public
+    RELib_LTScs.EnumOrderSubmitStatusType OrderSubmitStatus : Public
+    System.String AccountID : Public, HasFieldMarshal
+    Int32 NotifySequence : Public
+    System.String TradingDay : Public, HasFieldMarshal
+    Int32 SettlementID : Public
+    System.String OrderSysID : Public, HasFieldMarshal
+    RELib_LTScs.EnumOrderSourceType OrderSource : Public
+    RELib_LTScs.EnumOrderStatusType OrderStatus : Public
+    RELib_LTScs.EnumOrderTypeType OrderType : Public
+    Int32 VolumeTraded : Public
+    Int32 VolumeTotal : Public
+    System.String InsertDate : Public, HasFieldMarshal
+    System.String InsertTime : Public, HasFieldMarshal
+    System.String ActiveTime : Public, HasFieldMarshal
+    System.String SuspendTime : Public, HasFieldMarshal
+    System.String UpdateTime : Public, HasFieldMarshal
+    System.String CancelTime : Public, HasFieldMarshal
+    System.String ActiveTraderID : Public, HasFieldMarshal
+    System.String ClearingPartID : Public, HasFieldMarshal
+    Int32 SequenceNo : Public
+    Int32 FrontID : Public
+    Int32 SessionID : Public
+    System.String UserProductInfo : Public, HasFieldMarshal
+    System.String StatusMsg : Public, HasFieldMarshal
+    Int32 UserForceClose : Public
+    System.String ActiveUserID : Public, HasFieldMarshal
+    Int32 BrokerOrderSeq : Public
+    System.String RelativeOrderSysID : Public, HasFieldMarshal
+    System.String BranchID : Public, HasFieldMarshal
+    Double TradeAmount : Public
+    Int32 IsETF : Public
+    RELib_LTScs.EnumAccountTypeType AccountType : Public
+Class RELib_LTScs.SecurityFtdcOrderActionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    Int32 OrderActionRef : Public
+    System.String OrderRef : Public, HasFieldMarshal
+    Int32 RequestID : Public
+    Int32 FrontID : Public
+    Int32 SessionID : Public
+    System.String ExchangeID : Public, HasFieldMarshal
+    RELib_LTScs.EnumActionFlagType ActionFlag : Public
+    Double LimitPrice : Public
+    Int32 VolumeChange : Public
+    System.String ActionDate : Public, HasFieldMarshal
+    System.String ActionTime : Public, HasFieldMarshal
+    System.String BranchPBU : Public, HasFieldMarshal
+    Int32 InstallID : Public
+    System.String OrderLocalID : Public, HasFieldMarshal
+    System.String ActionLocalID : Public, HasFieldMarshal
+    System.String ParticipantID : Public, HasFieldMarshal
+    System.String ClientID : Public, HasFieldMarshal
+    System.String BusinessUnit : Public, HasFieldMarshal
+    RELib_LTScs.EnumOrderActionStatusType OrderActionStatus : Public
+    System.String UserID : Public, HasFieldMarshal
+    System.String BranchID : Public, HasFieldMarshal
+    System.String StatusMsg : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+    RELib_LTScs.EnumAccountTypeType AccountType : Public
+Class RELib_LTScs.SecurityFtdcErrOrderField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String OrderRef : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    RELib_LTScs.EnumOrderPriceTypeType OrderPriceType : Public
+    RELib_LTScs.EnumDirectionType Direction : Public
+    System.String CombOffsetFlag : Public, HasFieldMarshal
+    System.String CombHedgeFlag : Public, HasFieldMarshal
+    System.String LimitPrice : Public, HasFieldMarshal
+    Int32 VolumeTotalOriginal : Public
+    RELib_LTScs.EnumTimeConditionType TimeCondition : Public
+    System.String GTDDate : Public, HasFieldMarshal
+    RELib_LTScs.EnumVolumeConditionType VolumeCondition : Public
+    Int32 MinVolume : Public
+    RELib_LTScs.EnumContingentConditionType ContingentCondition : Public
+    Double StopPrice : Public
+    RELib_LTScs.EnumForceCloseReasonType ForceCloseReason : Public
+    Int32 IsAutoSuspend : Public
+    System.String BusinessUnit : Public, HasFieldMarshal
+    Int32 RequestID : Public
+    Int32 UserForceClose : Public
+    Int32 ErrorID : Public
+    System.String ErrorMsg : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcErrOrderActionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    Int32 OrderActionRef : Public
+    System.String OrderRef : Public, HasFieldMarshal
+    Int32 RequestID : Public
+    Int32 FrontID : Public
+    Int32 SessionID : Public
+    System.String ExchangeID : Public, HasFieldMarshal
+    RELib_LTScs.EnumActionFlagType ActionFlag : Public
+    Double LimitPrice : Public
+    Int32 VolumeChange : Public
+    System.String ActionDate : Public, HasFieldMarshal
+    System.String ActionTime : Public, HasFieldMarshal
+    System.String BranchPBU : Public, HasFieldMarshal
+    Int32 InstallID : Public
+    System.String OrderLocalID : Public, HasFieldMarshal
+    System.String ActionLocalID : Public, HasFieldMarshal
+    System.String ParticipantID : Public, HasFieldMarshal
+    System.String ClientID : Public, HasFieldMarshal
+    System.String BusinessUnit : Public, HasFieldMarshal
+    RELib_LTScs.EnumOrderActionStatusType OrderActionStatus : Public
+    System.String UserID : Public, HasFieldMarshal
+    System.String BranchID : Public, HasFieldMarshal
+    System.String StatusMsg : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+    RELib_LTScs.EnumAccountTypeType AccountType : Public
+    Int32 ErrorID : Public
+    System.String ErrorMsg : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcTradeField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String OrderRef : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String TradeID : Public, HasFieldMarshal
+    RELib_LTScs.EnumDirectionType Direction : Public
+    System.String OrderSysID : Public, HasFieldMarshal
+    System.String ParticipantID : Public, HasFieldMarshal
+    System.String ClientID : Public, HasFieldMarshal
+    RELib_LTScs.EnumTradingRoleType TradingRole : Public
+    System.String ExchangeInstID : Public, HasFieldMarshal
+    RELib_LTScs.EnumOffsetFlagType OffsetFlag : Public
+    RELib_LTScs.EnumHedgeFlagType HedgeFlag : Public
+    System.String Price : Public, HasFieldMarshal
+    Int32 Volume : Public
+    System.String TradeDate : Public, HasFieldMarshal
+    System.String TradeTime : Public, HasFieldMarshal
+    RELib_LTScs.EnumTradeTypeType TradeType : Public
+    RELib_LTScs.EnumPriceSourceType PriceSource : Public
+    System.String BranchPBU : Public, HasFieldMarshal
+    System.String OrderLocalID : Public, HasFieldMarshal
+    System.String ClearingPartID : Public, HasFieldMarshal
+    System.String BusinessUnit : Public, HasFieldMarshal
+    Int32 SequenceNo : Public
+    RELib_LTScs.EnumTradeSourceType TradeSource : Public
+    System.String TradingDay : Public, HasFieldMarshal
+    Int32 SettlementID : Public
+    Int32 BrokerOrderSeq : Public
+Class RELib_LTScs.SecurityFtdcInvestorPositionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    RELib_LTScs.EnumPosiDirectionType PosiDirection : Public
+    RELib_LTScs.EnumHedgeFlagType HedgeFlag : Public
+    RELib_LTScs.EnumPositionDateType PositionDate : Public
+    Int32 YdPosition : Public
+    Int32 Position : Public
+    Int32 LongFrozen : Public
+    Int32 ShortFrozen : Public
+    Double LongFrozenAmount : Public
+    Double ShortFrozenAmount : Public
+    Int32 OpenVolume : Public
+    Int32 CloseVolume : Public
+    Double OpenAmount : Public
+    Double CloseAmount : Public
+    Double PositionCost : Public
+    Double FrozenCash : Public
+    Double CashIn : Public
+    Double Commission : Public
+    Double PreSettlementPrice : Public
+    Double SettlementPrice : Public
+    System.String TradingDay : Public, HasFieldMarshal
+    Int32 SettlementID : Public
+    Double OpenCost : Public
+    Double ExchangeMargin : Public
+    Double MaintainMargin : Public
+    Int32 TodayPosition : Public
+    Double TransferFee : Public
+    Double StampTax : Public
+    Int32 TodayPurRedVolume : Public
+    Double ConversionRate : Public
+    Double ConversionAmount : Public
+    Double StockValue : Public
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String AccountID : Public, HasFieldMarshal
+    Int32 LockPosition : Public
+    Int32 CoverPosition : Public
+    Int32 LongLockFrozen : Public
+    Int32 ShortLockFrozen : Public
+    Int32 CoverFrozen : Public
+Class RELib_LTScs.SecurityFtdcSyncDepositField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String DepositSeqNo : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    Double Deposit : Public
+    Int32 IsForce : Public
+    System.String AccountID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcBrokerUserEventField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    RELib_LTScs.EnumUserEventTypeType UserEventType : Public
+    Int32 EventSequenceNo : Public
+    System.String EventDate : Public, HasFieldMarshal
+    System.String EventTime : Public, HasFieldMarshal
+    System.String UserEventInfo : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcInstrumentCommissionRateField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String InstrumentID : Public, HasFieldMarshal
+    RELib_LTScs.EnumInvestorRangeType InvestorRange : Public
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    RELib_LTScs.EnumDirectionType Direction : Public
+    Double StampTaxRateByMoney : Public
+    Double StampTaxRateByVolume : Public
+    Double TransferFeeRateByMoney : Public
+    Double TransferFeeRateByVolume : Public
+    Double TradeFeeByMoney : Public
+    Double TradeFeeByVolume : Public
+    Double MarginByMoney : Public
+    Double MinTradeFee : Public
+    System.String ExchangeID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryExchangeField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryProductField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ProductID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryInstrumentField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String ExchangeInstID : Public, HasFieldMarshal
+    System.String ProductID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryTraderField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String ParticipantID : Public, HasFieldMarshal
+    System.String BranchPBU : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryBrokerField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryPartBrokerField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String ParticipantID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryInvestorField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryTradingCodeField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String ClientID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQrySuperUserField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String UserID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQrySuperUserFunctionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String UserID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryBrokerUserField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryBrokerUserFunctionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryTradingAccountField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryLoginForbiddenUserField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryDepthMarketDataField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String InstrumentID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryInstrumentTradingRightField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryInvestorPositionDetailField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryBondInterestField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryTraderOfferField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String ParticipantID : Public, HasFieldMarshal
+    System.String BranchPBU : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryMDTraderOfferField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String ParticipantID : Public, HasFieldMarshal
+    System.String BranchPBU : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryFrontStatusField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 FrontID : Public
+Class RELib_LTScs.SecurityFtdcQryUserSessionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 FrontID : Public
+    Int32 SessionID : Public
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryOrderField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String OrderSysID : Public, HasFieldMarshal
+    System.String InsertTimeStart : Public, HasFieldMarshal
+    System.String InsertTimeEnd : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryOrderActionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryErrOrderField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryErrOrderActionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryTradeField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String TradeID : Public, HasFieldMarshal
+    System.String TradeTimeStart : Public, HasFieldMarshal
+    System.String TradeTimeEnd : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryInvestorPositionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQrySyncDepositField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String DepositSeqNo : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcQryBrokerUserEventField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    RELib_LTScs.EnumUserEventTypeType UserEventType : Public
+Class RELib_LTScs.SecurityFtdcQryInstrumentCommissionRateField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+    RELib_LTScs.EnumDirectionType Direction : Public
+Class RELib_LTScs.SecurityFtdcUserPasswordUpdateField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    System.String OldPassword : Public, HasFieldMarshal
+    System.String NewPassword : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcTradingAccountPasswordUpdateField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String AccountID : Public, HasFieldMarshal
+    System.String OldPassword : Public, HasFieldMarshal
+    System.String NewPassword : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcManualSyncBrokerUserOTPField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    RELib_LTScs.EnumOTPTypeType OTPType : Public
+    System.String FirstOTP : Public, HasFieldMarshal
+    System.String SecondOTP : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcBrokerUserPasswordField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    System.String Password : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcTradingAccountPasswordField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String AccountID : Public, HasFieldMarshal
+    System.String Password : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcUserRightField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    RELib_LTScs.EnumUserRightTypeType UserRightType : Public
+    Int32 IsForbidden : Public
+Class RELib_LTScs.SecurityFtdcInvestorAccountField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String AccountID : Public, HasFieldMarshal
+    RELib_LTScs.EnumAccountTypeType AccountType : Public
+    Int32 IsDefault : Public
+Class RELib_LTScs.SecurityFtdcUserIPField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    System.String IPAddress : Public, HasFieldMarshal
+    System.String IPMask : Public, HasFieldMarshal
+    System.String MacAddress : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcBrokerUserOTPParamField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    System.String OTPVendorsID : Public, HasFieldMarshal
+    System.String SerialNumber : Public, HasFieldMarshal
+    System.String AuthKey : Public, HasFieldMarshal
+    Int32 LastDrift : Public
+    Int32 LastSuccess : Public
+    RELib_LTScs.EnumOTPTypeType OTPType : Public
+Class RELib_LTScs.SecurityFtdcReqUserLoginField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String TradingDay : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    System.String Password : Public, HasFieldMarshal
+    System.String UserProductInfo : Public, HasFieldMarshal
+    System.String InterfaceProductInfo : Public, HasFieldMarshal
+    System.String ProtocolInfo : Public, HasFieldMarshal
+    System.String MacAddress : Public, HasFieldMarshal
+    System.String OneTimePassword : Public, HasFieldMarshal
+    System.String ClientIPAddress : Public, HasFieldMarshal
+    System.String AuthCode : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcRspUserLoginField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String TradingDay : Public, HasFieldMarshal
+    System.String LoginTime : Public, HasFieldMarshal
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    System.String SystemName : Public, HasFieldMarshal
+    Int32 FrontID : Public
+    Int32 SessionID : Public
+    System.String MaxOrderRef : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcUserLogoutField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcLogoutAllField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 FrontID : Public
+    Int32 SessionID : Public
+    System.String SystemName : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcForceUserLogoutField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcInputOrderField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String OrderRef : Public, HasFieldMarshal
+    System.String UserID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+    RELib_LTScs.EnumOrderPriceTypeType OrderPriceType : Public
+    RELib_LTScs.EnumDirectionType Direction : Public
+    System.String CombOffsetFlag : Public, HasFieldMarshal
+    System.String CombHedgeFlag : Public, HasFieldMarshal
+    System.String LimitPrice : Public, HasFieldMarshal
+    Int32 VolumeTotalOriginal : Public
+    RELib_LTScs.EnumTimeConditionType TimeCondition : Public
+    System.String GTDDate : Public, HasFieldMarshal
+    RELib_LTScs.EnumVolumeConditionType VolumeCondition : Public
+    Int32 MinVolume : Public
+    RELib_LTScs.EnumContingentConditionType ContingentCondition : Public
+    Double StopPrice : Public
+    RELib_LTScs.EnumForceCloseReasonType ForceCloseReason : Public
+    Int32 IsAutoSuspend : Public
+    System.String BusinessUnit : Public, HasFieldMarshal
+    Int32 RequestID : Public
+    Int32 UserForceClose : Public
+Class RELib_LTScs.SecurityFtdcInputOrderActionField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String BrokerID : Public, HasFieldMarshal
+    System.String InvestorID : Public, HasFieldMarshal
+    Int32 OrderActionRef : Public
+    System.String OrderRef : Public, HasFieldMarshal
+    Int32 RequestID : Public
+    Int32 FrontID : Public
+    Int32 SessionID : Public
+    System.String ExchangeID : Public, HasFieldMarshal
+    RELib_LTScs.EnumActionFlagType ActionFlag : Public
+    Double LimitPrice : Public
+    Int32 VolumeChange : Public
+    System.String UserID : Public, HasFieldMarshal
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String BranchPBU : Public, HasFieldMarshal
+    System.String OrderLocalID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcSpecificInstrumentField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String ExchangeID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcSpecificExchangeField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcMarketDataBaseField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String TradingDay : Public, HasFieldMarshal
+    Double PreSettlementPrice : Public
+    Double PreClosePrice : Public
+    Double PreOpenInterest : Public
+    Double PreDelta : Public
+Class RELib_LTScs.SecurityFtdcMarketDataStaticField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Double OpenPrice : Public
+    Double HighestPrice : Public
+    Double LowestPrice : Public
+    Double ClosePrice : Public
+    Double UpperLimitPrice : Public
+    Double LowerLimitPrice : Public
+    Double SettlementPrice : Public
+    Double CurrDelta : Public
+Class RELib_LTScs.SecurityFtdcMarketDataLastMatchField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Double LastPrice : Public
+    Int32 Volume : Public
+    Double Turnover : Public
+    Double OpenInterest : Public
+Class RELib_LTScs.SecurityFtdcMarketDataBestPriceField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Double BidPrice1 : Public
+    Int32 BidVolume1 : Public
+    Double AskPrice1 : Public
+    Int32 AskVolume1 : Public
+Class RELib_LTScs.SecurityFtdcMarketDataBid23Field: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Double BidPrice2 : Public
+    Int32 BidVolume2 : Public
+    Double BidPrice3 : Public
+    Int32 BidVolume3 : Public
+Class RELib_LTScs.SecurityFtdcMarketDataAsk23Field: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Double AskPrice2 : Public
+    Int32 AskVolume2 : Public
+    Double AskPrice3 : Public
+    Int32 AskVolume3 : Public
+Class RELib_LTScs.SecurityFtdcMarketDataBid45Field: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Double BidPrice4 : Public
+    Int32 BidVolume4 : Public
+    Double BidPrice5 : Public
+    Int32 BidVolume5 : Public
+Class RELib_LTScs.SecurityFtdcMarketDataAsk45Field: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Double AskPrice4 : Public
+    Int32 AskVolume4 : Public
+    Double AskPrice5 : Public
+    Int32 AskVolume5 : Public
+Class RELib_LTScs.SecurityFtdcMarketDataUpdateTimeField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String InstrumentID : Public, HasFieldMarshal
+    System.String UpdateTime : Public, HasFieldMarshal
+    Int32 UpdateMillisec : Public
+    System.String ActionDay : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcMarketDataAveragePriceField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Double AveragePrice : Public
+Class RELib_LTScs.SecurityFtdcMarketDataExchangeField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ExchangeID : Public, HasFieldMarshal
+Class RELib_LTScs.SecurityFtdcDisseminationField: AutoLayout, AnsiClass, Class, Public, SequentialLayout, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int16 SequenceSeries : Public
+    Int32 SequenceNo : Public
+Class RELib_LTScs.FrontConnected: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.FrontDisconnected: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(Int32): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(Int32, AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.HeartBeatWarning: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(Int32): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(Int32, AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspError: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspUserLogin: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcRspUserLoginField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcRspUserLoginField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspUserLogout: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcUserLogoutField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcUserLogoutField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspSubMarketData: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcSpecificInstrumentField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcSpecificInstrumentField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspUnSubMarketData: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcSpecificInstrumentField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcSpecificInstrumentField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RtnDepthMarketData: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcDepthMarketDataField): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcDepthMarketDataField, AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspOrderInsert: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcInputOrderField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcInputOrderField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspOrderAction: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcInputOrderActionField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcInputOrderActionField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspUserPasswordUpdate: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcUserPasswordUpdateField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcUserPasswordUpdateField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspTradingAccountPasswordUpdate: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcTradingAccountPasswordUpdateField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcTradingAccountPasswordUpdateField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspQryExchange: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcExchangeField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcExchangeField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspQryInstrument: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcInstrumentField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcInstrumentField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspQryInvestor: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcInvestorField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcInvestorField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspQryTradingCode: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcTradingCodeField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcTradingCodeField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspQryTradingAccount: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcTradingAccountField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcTradingAccountField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspQryDepthMarketData: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcDepthMarketDataField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcDepthMarketDataField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspQryInvestorPositionDetail: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcInvestorPositionDetailField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcInvestorPositionDetailField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspQryBondInterest: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcBondInterestField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcBondInterestField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspQryOrder: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcOrderField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcOrderField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspQryTrade: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcTradeField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcTradeField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RspQryInvestorPosition: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcInvestorPositionField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcInvestorPositionField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal), AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RtnOrder: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcOrderField): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcOrderField, AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.RtnTrade: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcTradeField): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcTradeField, AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.ErrRtnOrderInsert: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcInputOrderField, SecurityFtdcRspInfoField): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcInputOrderField, SecurityFtdcRspInfoField, AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.ErrRtnOrderAction: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Invoke(SecurityFtdcOrderActionField, SecurityFtdcRspInfoField): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    BeginInvoke(SecurityFtdcOrderActionField, SecurityFtdcRspInfoField, AsyncCallback, Object): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Final, Virtual, VtableLayoutMask
+Class RELib_LTScs.LTSMDAdapter: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Events:
+    RELib_LTScs.RspUserLogout OnRspUserLogout: SpecialName
+    RELib_LTScs.RspUserLogin OnRspUserLogin: SpecialName
+    RELib_LTScs.RspError OnRspError: SpecialName
+    RELib_LTScs.RtnDepthMarketData OnRtnDepthMarketData: SpecialName
+    RELib_LTScs.RspUnSubMarketData OnRspUnSubMarketData: SpecialName
+    RELib_LTScs.RspSubMarketData OnRspSubMarketData: SpecialName
+    RELib_LTScs.HeartBeatWarning OnHeartBeatWarning: SpecialName
+    RELib_LTScs.FrontDisconnected OnFrontDisconnected: SpecialName
+    RELib_LTScs.FrontConnected OnFrontConnected: SpecialName
+  Methods:
+    Release(): PrivateScope, Public, HideBySig
+    Init(): PrivateScope, Public, HideBySig
+    Join(): PrivateScope, Public, HideBySig
+    GetTradingDay(): PrivateScope, Public, HideBySig
+    RegisterFront(String): PrivateScope, Public, HideBySig
+    SubscribeMarketData(String[], Int32, String): PrivateScope, Public, HideBySig
+    UnSubscribeMarketData(String[], Int32, String): PrivateScope, Public, HideBySig
+    ReqUserLogin(SecurityFtdcReqUserLoginField, Int32): PrivateScope, Public, HideBySig
+    ReqUserLogout(SecurityFtdcUserLogoutField, Int32): PrivateScope, Public, HideBySig
+    add_OnFrontConnected(FrontConnected): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnFrontConnected(FrontConnected): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnFrontConnected(): PrivateScope, Public, HideBySig, SpecialName
+    add_OnFrontDisconnected(FrontDisconnected): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnFrontDisconnected(FrontDisconnected): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnFrontDisconnected(Int32): PrivateScope, Public, HideBySig, SpecialName
+    add_OnHeartBeatWarning(HeartBeatWarning): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnHeartBeatWarning(HeartBeatWarning): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnHeartBeatWarning(Int32): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspSubMarketData(RspSubMarketData): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspSubMarketData(RspSubMarketData): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspSubMarketData(SecurityFtdcSpecificInstrumentField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspUnSubMarketData(RspUnSubMarketData): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspUnSubMarketData(RspUnSubMarketData): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspUnSubMarketData(SecurityFtdcSpecificInstrumentField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRtnDepthMarketData(RtnDepthMarketData): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRtnDepthMarketData(RtnDepthMarketData): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRtnDepthMarketData(SecurityFtdcDepthMarketDataField): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspError(RspError): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspError(RspError): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspError(SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspUserLogin(RspUserLogin): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspUserLogin(RspUserLogin): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspUserLogin(SecurityFtdcRspUserLoginField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspUserLogout(RspUserLogout): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspUserLogout(RspUserLogout): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspUserLogout(SecurityFtdcUserLogoutField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Struct RELib_LTScs.EnumRESUMETYPE: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumRESUMETYPE TERT_RESTART = 0 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumRESUMETYPE TERT_RESUME = 1 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumRESUMETYPE TERT_QUICK = 2 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumExchangePropertyType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumExchangePropertyType Normal = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumExchangePropertyType GenOrderByTrade = 49 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumExchangeConnectStatusType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumExchangeConnectStatusType NoConnection = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumExchangeConnectStatusType QryInstrumentSent = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumExchangeConnectStatusType GotInformation = 57 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumProductClassType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumProductClassType Futures = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumProductClassType Options = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumProductClassType Combination = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumProductClassType Spot = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumProductClassType EFP = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumProductClassType StockA = 54 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumProductClassType StockB = 55 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumProductClassType ETF = 56 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumProductClassType ETFPurRed = 57 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumPositionTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumPositionTypeType Net = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumPositionTypeType Gross = 50 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumPositionDateTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumPositionDateTypeType UseHistory = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumPositionDateTypeType NoUseHistory = 50 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumInstLifePhaseType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumInstLifePhaseType NotStart = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumInstLifePhaseType Started = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumInstLifePhaseType Pause = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumInstLifePhaseType Expired = 51 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumPosTradeTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumPosTradeTypeType CanSelTodayPos = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumPosTradeTypeType CannotSellTodayPos = 50 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumIdCardTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumIdCardTypeType EID = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumIdCardTypeType IDCard = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumIdCardTypeType OfficerIDCard = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumIdCardTypeType PoliceIDCard = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumIdCardTypeType SoldierIDCard = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumIdCardTypeType HouseholdRegister = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumIdCardTypeType Passport = 54 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumIdCardTypeType TaiwanCompatriotIDCard = 55 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumIdCardTypeType HomeComingCard = 56 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumIdCardTypeType LicenseNo = 57 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumIdCardTypeType TaxNo = 65 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumIdCardTypeType OtherCard = 120 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumClientTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumClientTypeType Normal = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumClientTypeType Credit = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumClientTypeType Derive = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumClientTypeType Other = 52 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumFunctionCodeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumFunctionCodeType DataAsync = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType ForceUserLogout = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType UserPasswordUpdate = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType BrokerPasswordUpdate = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType InvestorPasswordUpdate = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType OrderInsert = 54 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType OrderAction = 55 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType SyncSystemData = 56 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType SyncBrokerData = 57 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType BachSyncBrokerData = 65 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType SuperQuery = 66 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType ParkedOrderInsert = 67 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType ParkedOrderAction = 68 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType SyncOTP = 69 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumFunctionCodeType UnkownOrderAction = 70 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumUserTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumUserTypeType Investor = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumUserTypeType Operator = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumUserTypeType SuperUser = 50 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumBrokerFunctionCodeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumBrokerFunctionCodeType ForceUserLogout = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType UserPasswordUpdate = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType SyncBrokerData = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType BachSyncBrokerData = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType OrderInsert = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType OrderAction = 54 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType AllQuery = 55 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType UnkownOrderAction = 56 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType log = 97 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType BaseQry = 98 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType TradeQry = 99 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType Trade = 100 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType Virement = 101 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType Risk = 102 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType Session = 103 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType RiskNoticeCtl = 104 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType RiskNotice = 105 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType BrokerDeposit = 106 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType QueryFund = 107 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType QueryOrder = 108 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType QueryTrade = 109 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType QueryPosition = 110 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType QueryMarketData = 111 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType QueryUserEvent = 112 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType QueryRiskNotify = 113 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType QueryFundChange = 114 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType QueryInvestor = 115 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType QueryTradingCode = 116 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType ForceClose = 117 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType PressTest = 118 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType RemainCalc = 119 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType NetPositionInd = 120 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType RiskPredict = 121 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType DataExport = 122 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType RiskTargetSetup = 65 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType MarketDataWarn = 66 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType QryBizNotice = 67 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType CfgBizNotice = 68 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType SyncOTP = 69 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType SendBizNotice = 70 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType CfgRiskLevelStd = 71 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumBrokerFunctionCodeType TbCommand = 72 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumAccountTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumAccountTypeType Normal = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumAccountTypeType Credit = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumAccountTypeType Derive = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumAccountTypeType Other = 52 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumDepartmentRangeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumDepartmentRangeType All = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDepartmentRangeType Group = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDepartmentRangeType Single = 51 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumUserRightTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumUserRightTypeType Logon = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumUserRightTypeType Transfer = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumUserRightTypeType EMail = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumUserRightTypeType Fax = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumUserRightTypeType ConditionOrder = 53 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumHedgeFlagType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumHedgeFlagType Speculation = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumHedgeFlagType Hedge = 51 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumDirectionType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumDirectionType Buy = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDirectionType Sell = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDirectionType ETFPur = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDirectionType ETFRed = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDirectionType CashIn = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDirectionType PledgeBondIn = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDirectionType PledgeBondOut = 54 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDirectionType Covered = 55 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDirectionType Deliver = 56 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDirectionType Freeze = 57 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumTradeTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumTradeTypeType Common = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradeTypeType OptionsExecution = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradeTypeType OTC = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradeTypeType EFPDerived = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradeTypeType CombinationDerived = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradeTypeType EFTPurchase = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradeTypeType EFTRedem = 54 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumCreationredemptionStatusType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumCreationredemptionStatusType Forbidden = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumCreationredemptionStatusType Allow = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumCreationredemptionStatusType OnlyPurchase = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumCreationredemptionStatusType OnlyRedeem = 51 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumETFCurrenceReplaceStatusType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumETFCurrenceReplaceStatusType Forbidden = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumETFCurrenceReplaceStatusType Allow = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumETFCurrenceReplaceStatusType Force = 50 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumCapitalStockTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumCapitalStockTypeType TOTALSTOCK = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumCapitalStockTypeType CIRCULATION = 50 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumMarginPriceTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumMarginPriceTypeType PreSettlementPrice = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumMarginPriceTypeType SettlementPrice = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumMarginPriceTypeType AveragePrice = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumMarginPriceTypeType OpenPrice = 52 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumAlgorithmType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumAlgorithmType All = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumAlgorithmType OnlyLost = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumAlgorithmType OnlyGain = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumAlgorithmType None = 52 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumIncludeCloseProfitType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumIncludeCloseProfitType Include = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumIncludeCloseProfitType NotInclude = 50 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumAllWithoutTradeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumAllWithoutTradeType Enable = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumAllWithoutTradeType Disable = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumAllWithoutTradeType NoHoldEnable = 51 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumHandlePositionAlgoIDType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumHandlePositionAlgoIDType Base = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumHandlePositionAlgoIDType NoneTrade = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumHandlePositionAlgoIDType Stock = 53 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumTradeParamIDType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumTradeParamIDType EncryptionStandard = 69 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradeParamIDType SingleUserSessionMaxNum = 83 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradeParamIDType LoginFailMaxNum = 76 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradeParamIDType IsAuthForce = 65 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumInvestorRangeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumInvestorRangeType All = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumInvestorRangeType Group = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumInvestorRangeType Single = 51 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumDataSyncStatusType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumDataSyncStatusType Asynchronous = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDataSyncStatusType Synchronizing = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumDataSyncStatusType Synchronized = 51 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumTraderConnectStatusType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumTraderConnectStatusType NotConnected = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTraderConnectStatusType Connected = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTraderConnectStatusType QryInstrumentSent = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTraderConnectStatusType SubPrivateFlow = 52 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumOrderActionStatusType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumOrderActionStatusType Submitted = 97 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderActionStatusType Accepted = 98 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderActionStatusType Rejected = 99 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumOrderStatusType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumOrderStatusType AllTraded = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderStatusType PartTradedQueueing = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderStatusType PartTradedNotQueueing = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderStatusType NoTradeQueueing = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderStatusType NoTradeNotQueueing = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderStatusType Canceled = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderStatusType Unknown = 97 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderStatusType NotTouched = 98 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderStatusType Touched = 99 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumOrderSubmitStatusType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumOrderSubmitStatusType InsertSubmitted = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderSubmitStatusType CancelSubmitted = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderSubmitStatusType ModifySubmitted = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderSubmitStatusType Accepted = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderSubmitStatusType InsertRejected = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderSubmitStatusType CancelRejected = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderSubmitStatusType ModifyRejected = 54 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumPositionDateType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumPositionDateType Today = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumPositionDateType History = 50 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumTradingRoleType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumTradingRoleType Broker = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradingRoleType Host = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradingRoleType Maker = 51 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumPosiDirectionType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumPosiDirectionType Net = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumPosiDirectionType Long = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumPosiDirectionType Short = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumPosiDirectionType Covered = 52 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumOrderPriceTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumOrderPriceTypeType AnyPrice = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType LimitPrice = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType BestPrice = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType LastPrice = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType Any2LimitPrice = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType ActiveANetPassSvrCode = 71 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType InactiveANetPassSvrCode = 72 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType ActiveBNetPassSvrCode = 73 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType InactiveBNetPassSvrCode = 74 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType Repurchase = 75 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType DesignatedCancel = 76 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType Designated = 77 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType SubscribingShares = 78 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType Split = 79 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType TenderOffer = 80 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType TenderOfferCancel = 81 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType Ballot = 82 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType ConvertibleBondsConvet = 83 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType ConvertibleBondsRepurchase = 84 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType Exercise = 85 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType PurchasingFunds = 86 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType RedemingFunds = 87 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType SubscribingFunds = 88 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType LOFIssue = 89 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType LOFSetBonusType = 90 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType LOFConvert = 97 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType DebentureStockIn = 98 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType DebentureStockOut = 99 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType PurchasesETF = 100 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderPriceTypeType RedeemETF = 101 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumOffsetFlagType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumOffsetFlagType Open = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOffsetFlagType Close = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOffsetFlagType ForceClose = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOffsetFlagType CloseToday = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOffsetFlagType CloseYesterday = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOffsetFlagType ForceOff = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOffsetFlagType LocalForceClose = 54 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOffsetFlagType Execute = 55 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumForceCloseReasonType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumForceCloseReasonType NotForceClose = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumForceCloseReasonType LackDeposit = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumForceCloseReasonType ClientOverPositionLimit = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumForceCloseReasonType MemberOverPositionLimit = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumForceCloseReasonType NotMultiple = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumForceCloseReasonType Violation = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumForceCloseReasonType Other = 54 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumForceCloseReasonType PersonDeliv = 55 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumOrderTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumOrderTypeType Normal = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderTypeType DeriveFromQuote = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderTypeType DeriveFromCombination = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderTypeType Combination = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderTypeType ConditionalOrder = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderTypeType Swap = 53 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumTimeConditionType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumTimeConditionType IOC = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTimeConditionType GFS = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTimeConditionType GFD = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTimeConditionType GTD = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTimeConditionType GTC = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTimeConditionType GFA = 54 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumVolumeConditionType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumVolumeConditionType AV = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumVolumeConditionType MV = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumVolumeConditionType CV = 51 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumContingentConditionType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumContingentConditionType Immediately = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType Touch = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType TouchProfit = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType ParkedOrder = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType LastPriceGreaterThanStopPrice = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType LastPriceGreaterEqualStopPrice = 54 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType LastPriceLesserThanStopPrice = 55 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType LastPriceLesserEqualStopPrice = 56 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType AskPriceGreaterThanStopPrice = 57 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType AskPriceGreaterEqualStopPrice = 65 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType AskPriceLesserThanStopPrice = 66 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType AskPriceLesserEqualStopPrice = 67 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType BidPriceGreaterThanStopPrice = 68 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType BidPriceGreaterEqualStopPrice = 69 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType BidPriceLesserThanStopPrice = 70 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumContingentConditionType BidPriceLesserEqualStopPrice = 72 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumActionFlagType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumActionFlagType Delete = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumActionFlagType Modify = 51 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumTradingRightType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumTradingRightType Allow = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradingRightType Forbidden = 50 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumOrderSourceType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumOrderSourceType Participant = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOrderSourceType Administrator = 49 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumPriceSourceType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumPriceSourceType LastPrice = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumPriceSourceType Buy = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumPriceSourceType Sell = 50 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumUserEventTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumUserEventTypeType Login = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumUserEventTypeType Logout = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumUserEventTypeType Trading = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumUserEventTypeType TradingError = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumUserEventTypeType UpdatePassword = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumUserEventTypeType Authenticate = 54 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumUserEventTypeType Other = 57 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumOTPTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumOTPTypeType NONE = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumOTPTypeType TOTP = 49 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumTradeSourceType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumTradeSourceType NORMAL = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumTradeSourceType QUERY = 49 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumInstrumentRangeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumInstrumentRangeType All = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumInstrumentRangeType Product = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumInstrumentRangeType Model = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumInstrumentRangeType Stock = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumInstrumentRangeType Market = 53 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumStockTradeTypeType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumStockTradeTypeType Stock = 48 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType BuyNetService = 49 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType CancelRepurchase = 50 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType CancelRegister = 51 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType Register = 52 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType PurchaseIssue = 53 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType Allotment = 54 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType SellTender = 55 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType BuyTender = 56 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType NetVote = 57 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType SellConvertibleBonds = 97 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType OptionExecute = 98 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType PurchaseOF = 99 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType RedeemOF = 100 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType SubscribeOF = 101 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType OFCustodianTranfer = 102 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType OFDividendConfig = 103 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType OFTransfer = 104 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType BondsIn = 105 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType BondsOut = 106 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType PurchaseETF = 107 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType RedeemETF = 108 : Public, Static, Literal, HasDefault
+    RELib_LTScs.EnumStockTradeTypeType ConvertibleRegister = 109 : Public, Static, Literal, HasDefault
+Struct RELib_LTScs.EnumHandleTradingAccountAlgoIDType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Enum
+  Fields:
+    Byte value__ : Public, SpecialName, RTSpecialName
+    RELib_LTScs.EnumHandleTradingAccountAlgoIDType Base = 49 : Public, Static, Literal, HasDefault
+Class RELib_LTScs.LTSTraderAdapter: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(System.String, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Events:
+    RELib_LTScs.ErrRtnOrderAction OnErrRtnOrderAction: SpecialName
+    RELib_LTScs.ErrRtnOrderInsert OnErrRtnOrderInsert: SpecialName
+    RELib_LTScs.RtnTrade OnRtnTrade: SpecialName
+    RELib_LTScs.RtnOrder OnRtnOrder: SpecialName
+    RELib_LTScs.RspQryInvestorPosition OnRspQryInvestorPosition: SpecialName
+    RELib_LTScs.RspQryTrade OnRspQryTrade: SpecialName
+    RELib_LTScs.RspQryOrder OnRspQryOrder: SpecialName
+    RELib_LTScs.RspQryBondInterest OnRspQryBondInterest: SpecialName
+    RELib_LTScs.RspQryInvestorPositionDetail OnRspQryInvestorPositionDetail: SpecialName
+    RELib_LTScs.RspQryDepthMarketData OnRspQryDepthMarketData: SpecialName
+    RELib_LTScs.RspQryTradingAccount OnRspQryTradingAccount: SpecialName
+    RELib_LTScs.RspQryTradingCode OnRspQryTradingCode: SpecialName
+    RELib_LTScs.RspQryInvestor OnRspQryInvestor: SpecialName
+    RELib_LTScs.RspQryInstrument OnRspQryInstrument: SpecialName
+    RELib_LTScs.RspQryExchange OnRspQryExchange: SpecialName
+    RELib_LTScs.RspTradingAccountPasswordUpdate OnRspTradingAccountPasswordUpdate: SpecialName
+    RELib_LTScs.RspUserPasswordUpdate OnRspUserPasswordUpdate: SpecialName
+    RELib_LTScs.RspOrderAction OnRspOrderAction: SpecialName
+    RELib_LTScs.RspOrderInsert OnRspOrderInsert: SpecialName
+    RELib_LTScs.RspUserLogout OnRspUserLogout: SpecialName
+    RELib_LTScs.RspUserLogin OnRspUserLogin: SpecialName
+    RELib_LTScs.RspError OnRspError: SpecialName
+    RELib_LTScs.HeartBeatWarning OnHeartBeatWarning: SpecialName
+    RELib_LTScs.FrontDisconnected OnFrontDisconnected: SpecialName
+    RELib_LTScs.FrontConnected OnFrontConnected: SpecialName
+  Methods:
+    remove_OnRspQryTrade(RspQryTrade): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspQryTrade(SecurityFtdcTradeField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspQryInvestorPosition(RspQryInvestorPosition): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspQryInvestorPosition(RspQryInvestorPosition): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspQryInvestorPosition(SecurityFtdcInvestorPositionField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRtnOrder(RtnOrder): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRtnOrder(RtnOrder): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRtnOrder(SecurityFtdcOrderField): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRtnTrade(RtnTrade): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRtnTrade(RtnTrade): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRtnTrade(SecurityFtdcTradeField): PrivateScope, Public, HideBySig, SpecialName
+    add_OnErrRtnOrderInsert(ErrRtnOrderInsert): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnErrRtnOrderInsert(ErrRtnOrderInsert): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnErrRtnOrderInsert(SecurityFtdcInputOrderField, SecurityFtdcRspInfoField): PrivateScope, Public, HideBySig, SpecialName
+    add_OnErrRtnOrderAction(ErrRtnOrderAction): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnErrRtnOrderAction(ErrRtnOrderAction): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnErrRtnOrderAction(SecurityFtdcOrderActionField, SecurityFtdcRspInfoField): PrivateScope, Public, HideBySig, SpecialName
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+    Release(): PrivateScope, Public, HideBySig
+    Init(): PrivateScope, Public, HideBySig
+    Join(): PrivateScope, Public, HideBySig
+    GetTradingDay(): PrivateScope, Public, HideBySig
+    RegisterFront(String): PrivateScope, Public, HideBySig
+    SubscribePrivateTopic(EnumRESUMETYPE): PrivateScope, Public, HideBySig
+    SubscribePublicTopic(EnumRESUMETYPE): PrivateScope, Public, HideBySig
+    ReqUserLogin(SecurityFtdcReqUserLoginField, Int32): PrivateScope, Public, HideBySig
+    ReqUserLogout(SecurityFtdcUserLogoutField, Int32): PrivateScope, Public, HideBySig
+    ReqOrderInsert(SecurityFtdcInputOrderField, Int32): PrivateScope, Public, HideBySig
+    ReqOrderAction(SecurityFtdcInputOrderActionField, Int32): PrivateScope, Public, HideBySig
+    ReqUserPasswordUpdate(SecurityFtdcUserPasswordUpdateField, Int32): PrivateScope, Public, HideBySig
+    ReqTradingAccountPasswordUpdate(SecurityFtdcTradingAccountPasswordUpdateField, Int32): PrivateScope, Public, HideBySig
+    ReqQryExchange(SecurityFtdcQryExchangeField, Int32): PrivateScope, Public, HideBySig
+    ReqQryInstrument(SecurityFtdcQryInstrumentField, Int32): PrivateScope, Public, HideBySig
+    ReqQryInvestor(SecurityFtdcQryInvestorField, Int32): PrivateScope, Public, HideBySig
+    ReqQryTradingCode(SecurityFtdcQryTradingCodeField, Int32): PrivateScope, Public, HideBySig
+    ReqQryTradingAccount(SecurityFtdcQryTradingAccountField, Int32): PrivateScope, Public, HideBySig
+    ReqQryDepthMarketData(SecurityFtdcQryDepthMarketDataField, Int32): PrivateScope, Public, HideBySig
+    ReqQryInvestorPositionDetail(SecurityFtdcQryInvestorPositionDetailField, Int32): PrivateScope, Public, HideBySig
+    ReqQryBondInterest(SecurityFtdcQryBondInterestField, Int32): PrivateScope, Public, HideBySig
+    ReqQryOrder(SecurityFtdcQryOrderField, Int32): PrivateScope, Public, HideBySig
+    ReqQryTrade(SecurityFtdcQryTradeField, Int32): PrivateScope, Public, HideBySig
+    ReqQryInvestorPosition(SecurityFtdcQryInvestorPositionField, Int32): PrivateScope, Public, HideBySig
+    add_OnFrontConnected(FrontConnected): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnFrontConnected(FrontConnected): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnFrontConnected(): PrivateScope, Public, HideBySig, SpecialName
+    add_OnFrontDisconnected(FrontDisconnected): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnFrontDisconnected(FrontDisconnected): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnFrontDisconnected(Int32): PrivateScope, Public, HideBySig, SpecialName
+    add_OnHeartBeatWarning(HeartBeatWarning): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnHeartBeatWarning(HeartBeatWarning): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnHeartBeatWarning(Int32): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspError(RspError): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspError(RspError): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspError(SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspUserLogin(RspUserLogin): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspUserLogin(RspUserLogin): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspUserLogin(SecurityFtdcRspUserLoginField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspUserLogout(RspUserLogout): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspUserLogout(RspUserLogout): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspUserLogout(SecurityFtdcUserLogoutField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspOrderInsert(RspOrderInsert): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspOrderInsert(RspOrderInsert): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspOrderInsert(SecurityFtdcInputOrderField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspOrderAction(RspOrderAction): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspOrderAction(RspOrderAction): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspOrderAction(SecurityFtdcInputOrderActionField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspUserPasswordUpdate(RspUserPasswordUpdate): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspUserPasswordUpdate(RspUserPasswordUpdate): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspUserPasswordUpdate(SecurityFtdcUserPasswordUpdateField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspTradingAccountPasswordUpdate(RspTradingAccountPasswordUpdate): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspTradingAccountPasswordUpdate(RspTradingAccountPasswordUpdate): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspTradingAccountPasswordUpdate(SecurityFtdcTradingAccountPasswordUpdateField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspQryExchange(RspQryExchange): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspQryExchange(RspQryExchange): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspQryExchange(SecurityFtdcExchangeField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspQryInstrument(RspQryInstrument): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspQryInstrument(RspQryInstrument): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspQryInstrument(SecurityFtdcInstrumentField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspQryInvestor(RspQryInvestor): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspQryInvestor(RspQryInvestor): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspQryInvestor(SecurityFtdcInvestorField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspQryTradingCode(RspQryTradingCode): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspQryTradingCode(RspQryTradingCode): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspQryTradingCode(SecurityFtdcTradingCodeField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspQryTradingAccount(RspQryTradingAccount): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspQryTradingAccount(RspQryTradingAccount): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspQryTradingAccount(SecurityFtdcTradingAccountField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspQryDepthMarketData(RspQryDepthMarketData): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspQryDepthMarketData(RspQryDepthMarketData): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspQryDepthMarketData(SecurityFtdcDepthMarketDataField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspQryInvestorPositionDetail(RspQryInvestorPositionDetail): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspQryInvestorPositionDetail(RspQryInvestorPositionDetail): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspQryInvestorPositionDetail(SecurityFtdcInvestorPositionDetailField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspQryBondInterest(RspQryBondInterest): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspQryBondInterest(RspQryBondInterest): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspQryBondInterest(SecurityFtdcBondInterestField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspQryOrder(RspQryOrder): PrivateScope, Public, HideBySig, SpecialName
+    remove_OnRspQryOrder(RspQryOrder): PrivateScope, Public, HideBySig, SpecialName
+    raise_OnRspQryOrder(SecurityFtdcOrderField, SecurityFtdcRspInfoField, Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig, SpecialName
+    add_OnRspQryTrade(RspQryTrade): PrivateScope, Public, HideBySig, SpecialName
