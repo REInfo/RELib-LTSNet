@@ -1,4 +1,19 @@
-﻿using System;
+﻿/*!
+* \file LTSDemo.cs
+* \brief 示例代码主程序接口
+*
+* 本项目是基于华宝技术LTS证券接口C#开发的示例程序，用于展示LTS如何在DoNet环境下用C#进行开发。示例代码演示了LTS各类接口C#的调用，在编写相关项目时可以参考。
+* 由尔易信息提供开源，最新代码可从http://github.com/REInfo获取。
+* 上海尔易信息科技有限公司提供证券、期货、期权、现货等市场交易、结算、 风控业务的客户化定制服务。
+*
+* \author wywty
+* \version 1.1
+* \date 2014-11-05
+* LTS_C#用户群: 317176423
+* 
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,7 +21,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using RELib_LTScs;
+using RELib_LTSNet;
 using System.Diagnostics;
 using System.Threading;
 
@@ -21,7 +36,7 @@ namespace RELib_LTScsDemo
         /// <summary>
         /// invoke
         /// </summary>
-        public AsyncShowCallbackData asyncMsg = null;
+        public AsyncShowCallbackData AsyncMsg = null;
         /// <summary>
         /// 合约查询是否完成
         /// </summary>
@@ -43,9 +58,10 @@ namespace RELib_LTScsDemo
             if (result == DialogResult.Cancel)
             {
                 this.Close();
+                return;
             }
-            DataSet ds = GetMarkDataInfo2Client();
-            FillMarketDataGrid(ds.Tables["MarketData"]);
+            //DataSet ds = GetMarkDataInfo2Client();
+            //FillMarketDataGrid(ds.Tables["MarketData"]);
 
 
 
@@ -70,8 +86,9 @@ namespace RELib_LTScsDemo
 
             //SubscribeMarketData();
             // FillMarketDataGrid(new DataTable());
-            MarketDataTimer.Enabled = true;
-            MarketDataTimer.Start();
+
+            //MarketDataTimer.Enabled = true;
+            //MarketDataTimer.Start();
         }
         /// <summary>
         /// 合约列表委托
@@ -80,10 +97,24 @@ namespace RELib_LTScsDemo
         CallbackUpdateComboboxInstrument callbackUpdateComboboxInstrument;
 
         /// <summary>
-        /// 更新合约下拉列表
+        /// 1.更新合约下拉列表
+        /// 2,。初始化SysConst.InstrumentData（默认10个）
         /// </summary>
         void UpdateComboboxInstrument()
         {
+            SysConst.InstrumentData.Clear();
+            var arr = SysConst.Instruments.Where(p => p.Key.IndexOf("6") == 0).Take(10);
+            foreach (var v in arr)
+            {
+                SysConst.InstrumentData.Add(v.Key, v.Value);
+            }
+            //DataSet ds = GetMarkDataInfo2Client();
+            //FillMarketDataGrid(ds.Tables["MarketData"]);
+            SubscribeMarketData();
+            MarketDataTimer.Enabled = true;
+            MarketDataTimer.Start();
+
+
             List<CBListItem> list = new List<CBListItem>();
             CBListItem item;
             foreach (string key in SysConst.Instruments.Keys)
@@ -95,25 +126,35 @@ namespace RELib_LTScsDemo
             comboBoxInstrument.DataSource = list;
             comboBoxInstrument.DisplayMember = "Value";
             comboBoxInstrument.ValueMember = "key";
+            //解决有可能初始化失败的问题
+            UpdateDelegateDataGrid();
         }
+        /// <summary>
+        /// 初始化一些查询
+        /// </summary>
         void InitQuery()
         {
-            Thread.Sleep(1000);
+
             SecurityFtdcQryInvestorPositionField positionField = new SecurityFtdcQryInvestorPositionField();
             positionField.BrokerID = SysConst.User.BrokerID;
             positionField.InvestorID = SysConst.User.UserID;
-            int r = SysConst.TraderApi.ReqQryInvestorPosition(positionField, SysConst.GetRequestID());
-
-
+            positionField.InstrumentID = "";
+            //查询持仓
+            int r = SysConst.QueryApi.ReqQryInvestorPosition(positionField, SysConst.GetRequestID());
+            if (r == 0)
+                AsyncMsg.AppendMsg("发送持仓查询！");
+            else
+                AsyncMsg.AppendMsg("发送持仓查询失败！");
+            Thread.Sleep(1000);
             ///延迟不是很好，最好弄个队列，等前面查询完了，再处理下一个查询
-            Thread.Sleep(1500);
+            // Thread.Sleep(1500);
             /////查询资金信息
             //SecurityFtdcQryTradingAccountField accountField = new SecurityFtdcQryTradingAccountField();
             //accountField.BrokerID = SysConst.User.BrokerID;
             //accountField.InvestorID = "";
             //r = SysConst.TraderApi.ReqQryTradingAccount(accountField, SysConst.GetRequestID());
             //延迟显示
-            UpdateDelegateDataGrid();
+            //UpdateDelegateDataGrid();
             //延迟显示
             UpdateTradeDataGrid();
         }
@@ -137,7 +178,7 @@ namespace RELib_LTScsDemo
         /// </summary>
         public void UpDateMarketDataGrid()
         {
-           
+
         }
         /// <summary>
         /// 设置行情表头
@@ -252,7 +293,8 @@ namespace RELib_LTScsDemo
         private void UpdateMarketGridRow()
         {
             int num = SysConst.MarketData.Count;
-            if (num == 0) return;
+            if (num >= this.MarketDataGrid.Rows.Count)
+                return;
             Dictionary<string, SecurityFtdcDepthMarketDataField> marketDatas = SysConst.MarketData;
             for (int i = 0; i < num; i++)
             {
@@ -272,7 +314,7 @@ namespace RELib_LTScsDemo
                     this.MarketDataGrid.Rows[i].Cells["AskPrice1"].Value = marketDatas[key].AskPrice1.ToString(string.Format("F{0}", minSpreadPriceCount));
                     this.MarketDataGrid.Rows[i].Cells["HighestPrice"].Value = marketDatas[key].HighestPrice.ToString(string.Format("F{0}", minSpreadPriceCount));
                     this.MarketDataGrid.Rows[i].Cells["LowerLimitPrice"].Value = marketDatas[key].LowerLimitPrice.ToString(string.Format("F{0}", minSpreadPriceCount));
-               
+
                     double UpDown = marketDatas[key].LastPrice - marketDatas[key].PreClosePrice;//.ToString("n2");m_MarketData.LastPrice - m_MarketData.PreClosePrice
                     string v = UpDown.ToString("n2");
                     this.MarketDataGrid.Rows[i].Cells["UpDown"].Value = v;
@@ -393,12 +435,12 @@ namespace RELib_LTScsDemo
 
                 return set;
             }
-            return set;
         }
         #endregion
 
         /// <summary>
         /// 订阅行情
+        /// 订阅 SysConst.InstrumentData中的所有合约
         /// </summary>
         void SubscribeMarketData()
         {
@@ -408,25 +450,30 @@ namespace RELib_LTScsDemo
             String msg = "\n--->>> 发送行情订阅请求: " + ((iResult == 0) ? "成功" : "失败");
             // MarketLabel.Text += msg;
             Debug.WriteLine(msg);
+            AsyncMsg.ShowMsg(msg);
         }
 
 
         #region 回调函数
-        /// <summary>
-        /// 连接回调函数
-        /// </summary>
-        public void OnFrontConnected()
-        {
-            asyncMsg.AppendMsg(DateTime.Now + " 交易前置机连接成功！");
-            
-        }
+
         public void OnFrontConnectedMarket()
         {
             //Debug.WriteLine("前置机连接成功！");
-            asyncMsg.AppendMsg(DateTime.Now + " 行情前置机连接成功！");
+            AsyncMsg.AppendMsg(DateTime.Now + " 行情前置机连接成功！");
         }
-
-
+        private bool queryIsConnected = false;
+        public void OnFrontConnectedQuery()
+        {
+            if (!queryIsConnected)
+            {
+                queryIsConnected = true;
+                SecurityFtdcAuthRandCodeField field = new SecurityFtdcAuthRandCodeField();
+                field.RandCode = DateTime.Now.Ticks.ToString().Substring(0, 15);
+                SysConst.QueryApi.ReqFetchAuthRandCode(field, SysConst.GetRequestID());
+                Debug.WriteLine("前置机连接成功！");
+                AsyncMsg.AppendMsg(DateTime.Now + " 查询前置机连接成功！");
+            }
+        }
         /// <summary>
         /// 发生错误
         /// </summary>
@@ -437,7 +484,7 @@ namespace RELib_LTScsDemo
         {
             DebugPrintFunc(new StackTrace());
             //IsErrorRspInfo(pRspInfo);
-            asyncMsg.AppendMsg(pRspInfo.ErrorMsg);
+            AsyncMsg.AppendMsg(pRspInfo.ErrorMsg);
         }
 
         void OnHeartBeatWarning(int nTimeLapse)
@@ -465,14 +512,14 @@ namespace RELib_LTScsDemo
                 ///获取当前交易日
                 String msg = "\n--->>> 获取当前交易日 = " + SysConst.MarketDataApi.GetTradingDay();
                 //Console.WriteLine(msg);
-                asyncMsg.AppendMsg("\n--->>> 行情登录成功！");
+                AsyncMsg.AppendMsg("\n--->>> 行情登录成功！");
                 Debug.WriteLine(msg);
-                // 请求订阅行情
-                SubscribeMarketData();
+                // 请求订阅行情,获取合约之后再来订阅行情
+                //SubscribeMarketData();
             }
             else
             {
-                asyncMsg.AppendMsg("登录失败：账号或者密码错误！");
+                AsyncMsg.AppendMsg("登录失败：账号或者密码错误！");
                 Debug.WriteLine(pRspInfo.ErrorMsg);
 
             }
@@ -511,7 +558,7 @@ namespace RELib_LTScsDemo
             //now.AddMilliseconds(pDepthMarketData.UpdateMillisec);
             string msg = string.Format("\n{0,-6} : UpdateTime = {1}.{2:D3},  LasPrice = {3}", pDepthMarketData.InstrumentID, pDepthMarketData.UpdateTime, pDepthMarketData.UpdateMillisec, pDepthMarketData.LastPrice);
             // MarketLabel.Text += msg;
-            // asyncMsg.AppendMsg(msg);
+            //AsyncMsg.AppendMsg(msg);
             Debug.WriteLine(msg);
         }
         void DebugPrintFunc(StackTrace stkTrace)
@@ -536,6 +583,7 @@ namespace RELib_LTScsDemo
 
                 if (bIsLast)
                 {
+                    AsyncMsg.ShowMsg("持仓信息查询完毕！");
                     DataSet ds2 = GetPositionInfo2Client();
                     if (this.PositionDataGrid.InvokeRequired)
                     {
@@ -545,9 +593,11 @@ namespace RELib_LTScsDemo
                     {
                         FillPositionDataGrid(ds2.Tables["Position"]);
                     }
-                    // asyncMsg.UpdateGrid(this.PositionDataGrid, ds2.Tables["Position"]);
-                    Debug.WriteLine("持仓信息查询完毕！");
+                    // AsyncMsg.UpdateGrid(this.PositionDataGrid, ds2.Tables["Position"]);
+                    //Debug.WriteLine("持仓信息查询完毕！");
+
                     queryIsInit = true;
+                    AsyncMsg.OK();
                 }
             }
             else
@@ -581,6 +631,7 @@ namespace RELib_LTScsDemo
                     }
                     // asyncMsg.UpdateGrid(this.PositionDataGrid, ds2.Tables["Position"]);
                     Debug.WriteLine("资金信息查询完毕！");
+                    AsyncMsg.AppendMsg("资金信息查询完毕！");
                 }
             }
             else
@@ -600,9 +651,10 @@ namespace RELib_LTScsDemo
             if (pInstrument != null)
             {
                 SysConst.Instruments[pInstrument.InstrumentID.Trim()] = pInstrument;
+                //合约查询完毕后，初始化界面的工作
                 if (bIsLast)
                 {
-                    InitQuery();
+                    AsyncMsg.AppendMsg("合约查询完毕！");
                     ///
                     if (comboBoxInstrument.InvokeRequired)
                     {
@@ -610,12 +662,15 @@ namespace RELib_LTScsDemo
                     }
                     else
                         UpdateComboboxInstrument();
+                    InitQuery();
                     Debug.WriteLine("合约查询完毕！");
+
                 }
             }
             else
             {
                 Debug.WriteLine("没有合约信息！");
+                AsyncMsg.AppendMsg("没有合约信息！");
             }
         }
         /// <summary>
@@ -647,8 +702,14 @@ namespace RELib_LTScsDemo
         {
             if (pOrder == null) return;
             SysConst.Orders.Add(pOrder);
-            if(queryIsInit)// 由于合约信息没有得到，所以需要延迟显示，如果得到就直接显示
-                UpdateDelegateDataGrid();
+            //while (true)// 由于合约信息没有得到，所以需要延迟显示，如果得到就直接显示
+            {
+                if (queryIsInit)
+                {
+                    UpdateDelegateDataGrid();
+                    // break;
+                }
+            }
             Debug.WriteLine("报单回报 " + pOrder.OrderLocalID);
         }
         void OnRtnTrade(SecurityFtdcTradeField pTrade)
@@ -671,7 +732,7 @@ namespace RELib_LTScsDemo
             instrumentField.ExchangeInstID = String.Empty;
             instrumentField.InstrumentID = String.Empty;
             instrumentField.ProductID = String.Empty;
-            int r = SysConst.TraderApi.ReqQryInstrument(instrumentField, SysConst.GetRequestID());
+            int r = SysConst.QueryApi.ReqQryInstrument(instrumentField, SysConst.GetRequestID());
         }
         /// <summary>
         ///  初始化API
@@ -681,21 +742,22 @@ namespace RELib_LTScsDemo
         {
             if (SysConst.TraderApi == null)
             {
-                SysConst.TraderApi = new LTSTraderAdapter();
+                SysConst.TraderApi = new CLTSTraderAdapter();
 
                 SysConst.MarketDataApi = new LTSMDAdapter();
+                SysConst.QueryApi = new CLTSQueryAdapter();
                 try
                 {
-                    SysConst.TraderApi.OnFrontConnected += new FrontConnected(OnFrontConnected);
+                    SysConst.TraderApi.OnFrontConnected += new FrontConnected(loginWin.OnFrontConnected);
                     SysConst.TraderApi.OnRspUserLogin += new RspUserLogin(loginWin.OnRspUserLogin);
-
+                    SysConst.TraderApi.OnRspFetchAuthRandCode += new RspFetchAuthRandCode(loginWin.OnRspFetchAuthRandCode);
 
                     ///客户持仓信息
-                    SysConst.TraderApi.OnRspQryInvestorPosition += new RspQryInvestorPosition(OnRspQryInvestorPosition);
+                    SysConst.QueryApi.OnRspQryInvestorPosition += new RspQryInvestorPosition(OnRspQryInvestorPosition);
                     //资金信息
-                    SysConst.TraderApi.OnRspQryTradingAccount += new RspQryTradingAccount(OnRspQryTradingAccount);
+                    SysConst.QueryApi.OnRspQryTradingAccount += new RspQryTradingAccount(OnRspQryTradingAccount);
                     //合约信息
-                    SysConst.TraderApi.OnRspQryInstrument += new RspQryInstrument(OnRspQryInstrument);
+                    SysConst.QueryApi.OnRspQryInstrument += new RspQryInstrument(OnRspQryInstrument);
 
                     SysConst.TraderApi.OnRspOrderInsert += new RspOrderInsert(OnRspOrderInsert);
 
@@ -722,6 +784,20 @@ namespace RELib_LTScsDemo
                     SysConst.TraderApi.Init();
 
 
+                }
+                catch (Exception ex)
+                {
+
+                }
+                try
+                {
+                    SysConst.QueryApi.OnFrontConnected += new FrontConnected(OnFrontConnectedQuery);
+                    SysConst.QueryApi.OnRspFetchAuthRandCode += new RspFetchAuthRandCode(loginWin.OnRspFetchAuthRandCodeQuery);
+                    SysConst.QueryApi.OnRspUserLogin += new RspUserLogin(loginWin.OnRspUserLoginQuery);
+
+
+                    SysConst.QueryApi.RegisterFront(SysConst.QueryFrontAddress);
+                    SysConst.QueryApi.Init();
                 }
                 catch (Exception ex)
                 {
@@ -754,7 +830,9 @@ namespace RELib_LTScsDemo
 
         private void MarketDataTimer_Tick(object sender, EventArgs e)
         {
-            UpdateMarketGridRow();
+            //UpdateMarketGridRow();
+            DataSet ds = GetMarkDataInfo2Client();
+            FillMarketDataGrid(ds.Tables["MarketData"]);
         }
 
 
@@ -931,7 +1009,7 @@ namespace RELib_LTScsDemo
                     row["PositionDirection"] = positionDatas[key].PosiDirection.ToString();
                     row["Position"] = positionDatas[key].Position;
                     row["TodayPosition"] = positionDatas[key].TodayPosition;
-                   
+
                     row["PositionPrice"] = positionDatas[key].PositionCost.ToString("n" + minSpreadPriceCount);
 
                     double lastPrice = 0;
@@ -1175,7 +1253,8 @@ namespace RELib_LTScsDemo
 
             this.TradeDataGrid.Columns["InstrumentID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             this.TradeDataGrid.Columns["InstrumentID"].HeaderText = "证券代码";
-
+            this.DelegateDataGrid.Columns["InstrumentName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            this.DelegateDataGrid.Columns["InstrumentName"].HeaderText = "证券名称";
 
             DataGridViewCellStyle defaultCellStyle = this.TradeDataGrid.Columns["TradeID"].DefaultCellStyle;
             defaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -1243,6 +1322,8 @@ namespace RELib_LTScsDemo
             //合约ID
             table.Columns.Add(new DataColumn("InstrumentID"));
             //名称
+            table.Columns.Add(new DataColumn("InstrumentName"));
+
             table.Columns.Add(new DataColumn("TradeID"));
             table.Columns.Add(new DataColumn("Direction"));
             table.Columns.Add(new DataColumn("OffSetFlag"));
@@ -1475,20 +1556,22 @@ namespace RELib_LTScsDemo
                 ///设置选中项
                 comboBoxInstrument.SelectedItem = new CBListItem(key, key + "(" + SysConst.Instruments[key].InstrumentName + ")");
                 textBoxName.Text = SysConst.Instruments[key].InstrumentName;
-                if (colIndex <= 3)
-                {
-                    radioButtonSell.Checked = true;
-                    if (colIndex == 2)
-                        textBoxPrice.Text = this.MarketDataGrid.Rows[e.RowIndex].Cells[colIndex].Value.ToString();
-                    else
-                        textBoxPrice.Text = this.MarketDataGrid.Rows[e.RowIndex].Cells["BidPrice1"].Value.ToString();
-                }
-                else
-                {
-                    radioButtonBuy.Checked = true;
+                //if (colIndex <= 3)
+                //{
+                //    radioButtonSell.Checked = true;
+                //    if (colIndex == 2)
+                //        textBoxPrice.Text = this.MarketDataGrid.Rows[e.RowIndex].Cells[colIndex].Value.ToString();
+                //    else
+                //        textBoxPrice.Text = this.MarketDataGrid.Rows[e.RowIndex].Cells["BidPrice1"].Value.ToString();
+                //}
+                //else
+                //{
+                //    radioButtonBuy.Checked = true;
 
-                    textBoxPrice.Text = this.MarketDataGrid.Rows[e.RowIndex].Cells["AskPrice1"].Value.ToString();
-                }
+                //    textBoxPrice.Text = this.MarketDataGrid.Rows[e.RowIndex].Cells["AskPrice1"].Value.ToString();
+                //}
+                radioButtonBuy.Checked = true;
+                textBoxPrice.Text = this.MarketDataGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
                 textBoxVolume.Text = "1";
             }
         }
@@ -1530,7 +1613,8 @@ namespace RELib_LTScsDemo
 
             SecurityFtdcInputOrderField field = new SecurityFtdcInputOrderField();
             field.BrokerID = SysConst.User.BrokerID;
-            field.InvestorID = field.UserID = SysConst.User.UserID;
+            field.InvestorID = SysConst.User.UserID;
+            field.UserID = SysConst.User.UserID;
             field.ExchangeID = SysConst.Instruments[instrumentID].ExchangeID;
             field.InstrumentID = instrumentID;
             field.OrderPriceType = EnumOrderPriceTypeType.LimitPrice;
@@ -1539,16 +1623,16 @@ namespace RELib_LTScsDemo
 
             field.OrderRef = SysConst.GetOrderID();
 
-            field.GTDDate = SysConst.TraderApi.GetTradingDay();
-            field.MinVolume = 1;//最小成交量:1	
-            field.ContingentCondition = EnumContingentConditionType.Immediately;//触发条件:立即
+            field.GTDDate =  SysConst.TraderApi.GetTradingDay();
+            field.MinVolume = 0;//最小成交量:1	
+            field.ContingentCondition = EnumContingentConditionType.ParkedOrder;//触发条件:立即,
             field.StopPrice = 0;
-            field.ForceCloseReason = EnumForceCloseReasonType.NotForceClose;
+            field.ForceCloseReason = EnumForceCloseReasonType.NotForceClose;// ((char)EnumForceCloseReasonType.NotForceClose).ToString();
             field.IsAutoSuspend = 0;//自动挂起标志:否	
             field.RequestID = requestID;
             field.UserForceClose = 0;//用户强评标志:否
             field.VolumeCondition = EnumVolumeConditionType.AV; //成交量类型:任何数量
-            field.TimeCondition = EnumTimeConditionType.GFD;
+            field.TimeCondition = EnumTimeConditionType.GFS;// EnumTimeConditionType.GFD;
             if (this.radioButtonBuy.Checked)
             {
                 field.Direction = EnumDirectionType.Buy;
@@ -1557,25 +1641,83 @@ namespace RELib_LTScsDemo
             {
                 field.Direction = EnumDirectionType.Sell;
             }
-            Byte v = 0;
+            char v = (char)EnumOffsetFlagType.Open;
             if (radioButtonOpenPosi.Checked)
             {
-                v = (Byte)EnumOffsetFlagType.Open;
+                v = (char)EnumOffsetFlagType.Open;
             }
             else if (radioButtonOpenPosi.Checked)
             {
-                v = (Byte)EnumOffsetFlagType.Close;
+                v = (char)EnumOffsetFlagType.Close;
             }
-            Byte flag = (Byte)EnumHedgeFlagType.Speculation;
+            char flag = (char)EnumHedgeFlagType.Speculation;
             field.CombHedgeFlag = flag.ToString();
+
             field.CombOffsetFlag = v.ToString();
-            // OffSetFlag = SECURITY_FTDC_OF_Open;
+            //OffSetFlag = SECURITY_FTDC_OF_Open;
+            field.BusinessUnit = "";
 
             int nRes = SysConst.TraderApi.ReqOrderInsert(field, requestID);
             string msg = string.Format("报单发送{0}", nRes == 0 ? "成功" : "失败");
             Debug.WriteLine(msg);
             MessageBox.Show(msg);
         }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            int Qty = 100;
+            int result = 999;
+            SecurityFtdcInputOrderField pInputOrder = new SecurityFtdcInputOrderField();
+            pInputOrder.BrokerID = SysConst.User.BrokerID;
+            pInputOrder.UserID = SysConst.User.UserID;
+            pInputOrder.InvestorID = SysConst.User.UserID;
+
+            pInputOrder.OrderRef = SysConst.GetOrderID();
+            if (Qty > 0)
+            {
+                pInputOrder.Direction = EnumDirectionType.Buy;
+                pInputOrder.VolumeTotalOriginal = Qty;
+            }
+            else
+            {
+                pInputOrder.Direction = EnumDirectionType.Sell;
+                pInputOrder.VolumeTotalOriginal = Math.Abs(Qty);
+            }
+            double price = 0;
+            int volume = 0;
+            Int32.TryParse(textBoxVolume.Text, out volume);
+            double.TryParse(textBoxPrice.Text, out price);
+            pInputOrder.LimitPrice = price.ToString("n" + 3);
+            pInputOrder.OrderPriceType = EnumOrderPriceTypeType.LimitPrice;
+
+            pInputOrder.TimeCondition = EnumTimeConditionType.GFD;
+            pInputOrder.VolumeCondition = EnumVolumeConditionType.AV;
+            pInputOrder.ContingentCondition = EnumContingentConditionType.ParkedOrder;
+
+            pInputOrder.CombOffsetFlag = ((Byte)EnumOffsetFlagType.Open).ToString();
+            pInputOrder.CombHedgeFlag = ((Byte)EnumHedgeFlagType.Speculation).ToString();
+            pInputOrder.IsAutoSuspend = 0;
+            pInputOrder.MinVolume = 0;
+            pInputOrder.GTDDate = string.Empty;// SysConst.TraderApi.GetTradingDay();
+            pInputOrder.StopPrice = 0;
+            pInputOrder.ForceCloseReason = EnumForceCloseReasonType.NotForceClose;
+            pInputOrder.UserForceClose = 0;
+
+            CBListItem item = (CBListItem)comboBoxInstrument.SelectedItem;
+            string instrumentID = item.Key;
+            string instrumentName = SysConst.Instruments[instrumentID].InstrumentName;
+
+            pInputOrder.InstrumentID = instrumentID;
+            int requestID = SysConst.GetRequestID();
+            pInputOrder.RequestID = requestID;
+
+            pInputOrder.ExchangeID = SysConst.Instruments[instrumentID].ExchangeID;
+            result = SysConst.TraderApi.ReqOrderInsert(pInputOrder, pInputOrder.RequestID);
+            Console.WriteLine("order result: " + result);
+            //return result;
+        }
+
+
 
 
         private void comboBoxInstrument_SelectedIndexChanged(object sender, EventArgs e)
@@ -1595,7 +1737,7 @@ namespace RELib_LTScsDemo
                 SecurityFtdcQryTradingAccountField accountField = new SecurityFtdcQryTradingAccountField();
                 accountField.BrokerID = SysConst.User.BrokerID;
                 accountField.InvestorID = "";
-                int r = SysConst.TraderApi.ReqQryTradingAccount(accountField, SysConst.GetRequestID());
+                int r = SysConst.QueryApi.ReqQryTradingAccount(accountField, SysConst.GetRequestID());
             }
 
         }
@@ -1618,7 +1760,7 @@ namespace RELib_LTScsDemo
             field.ExchangeID = order.ExchangeID;
             field.ActionFlag = EnumActionFlagType.Delete;
 
-            Double.TryParse(order.LimitPrice, out field.LimitPrice);
+            double.TryParse(order.LimitPrice, out field.LimitPrice);
             field.VolumeChange = order.VolumeTotalOriginal;
             field.InstrumentID = order.InstrumentID;
             field.OrderLocalID = order.OrderLocalID;

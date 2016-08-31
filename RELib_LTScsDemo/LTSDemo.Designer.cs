@@ -95,11 +95,11 @@
             this.tabControlQuery.Controls.Add(this.tabPage2);
             this.tabControlQuery.Controls.Add(this.tabPage3);
             this.tabControlQuery.Controls.Add(this.tabPage4);
-            this.tabControlQuery.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControlQuery.Location = new System.Drawing.Point(279, 318);
+            this.tabControlQuery.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlQuery.Location = new System.Drawing.Point(283, 318);
             this.tabControlQuery.Name = "tabControlQuery";
             this.tabControlQuery.SelectedIndex = 0;
-            this.tabControlQuery.Size = new System.Drawing.Size(892, 265);
+            this.tabControlQuery.Size = new System.Drawing.Size(888, 265);
             this.tabControlQuery.TabIndex = 1;
             this.tabControlQuery.SelectedIndexChanged += new System.EventHandler(this.tabControlQuery_SelectedIndexChanged);
             // 
@@ -109,7 +109,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(884, 239);
+            this.tabPage1.Size = new System.Drawing.Size(880, 239);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "持仓查询";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -122,7 +122,7 @@
             this.PositionDataGrid.Location = new System.Drawing.Point(3, 3);
             this.PositionDataGrid.Name = "PositionDataGrid";
             this.PositionDataGrid.RowTemplate.Height = 23;
-            this.PositionDataGrid.Size = new System.Drawing.Size(878, 233);
+            this.PositionDataGrid.Size = new System.Drawing.Size(874, 233);
             this.PositionDataGrid.TabIndex = 0;
             // 
             // tabPage2
@@ -131,7 +131,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(884, 239);
+            this.tabPage2.Size = new System.Drawing.Size(880, 239);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "成交回报";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             this.TradeDataGrid.Location = new System.Drawing.Point(3, 3);
             this.TradeDataGrid.Name = "TradeDataGrid";
             this.TradeDataGrid.RowTemplate.Height = 23;
-            this.TradeDataGrid.Size = new System.Drawing.Size(878, 233);
+            this.TradeDataGrid.Size = new System.Drawing.Size(874, 233);
             this.TradeDataGrid.TabIndex = 1;
             // 
             // tabPage3
@@ -153,7 +153,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(884, 239);
+            this.tabPage3.Size = new System.Drawing.Size(880, 239);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "资金查询";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -166,7 +166,7 @@
             this.FundDataGrid.Location = new System.Drawing.Point(3, 3);
             this.FundDataGrid.Name = "FundDataGrid";
             this.FundDataGrid.RowTemplate.Height = 23;
-            this.FundDataGrid.Size = new System.Drawing.Size(878, 233);
+            this.FundDataGrid.Size = new System.Drawing.Size(874, 233);
             this.FundDataGrid.TabIndex = 1;
             // 
             // tabPage4
@@ -175,7 +175,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(884, 239);
+            this.tabPage4.Size = new System.Drawing.Size(880, 239);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "委托回报";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -188,7 +188,7 @@
             this.DelegateDataGrid.Location = new System.Drawing.Point(3, 3);
             this.DelegateDataGrid.Name = "DelegateDataGrid";
             this.DelegateDataGrid.RowTemplate.Height = 23;
-            this.DelegateDataGrid.Size = new System.Drawing.Size(878, 233);
+            this.DelegateDataGrid.Size = new System.Drawing.Size(874, 233);
             this.DelegateDataGrid.TabIndex = 1;
             // 
             // panel1
@@ -359,13 +359,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1171, 583);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControlQuery);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.MarketDataGrid);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LTSDemo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LTSCSharpDemo";
+            this.Text = "LTSCSharpDemo 0.5";
             ((System.ComponentModel.ISupportInitialize)(this.MarketDataGrid)).EndInit();
             this.tabControlQuery.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

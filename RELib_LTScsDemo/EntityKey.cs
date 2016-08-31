@@ -9,9 +9,10 @@
 * 上海尔易信息科技有限公司提供证券、期货、期权、现货等市场交易、结算、
 * 风控业务的客户化定制服务。
 *
-* \author Christian
-* \version 1.0
-* \date 2014-6-16
+* \author wywty
+* \version 1.1
+* \date 2014-11-05
+* LTS_C#用户群: 317176423
 * 
 */
 
@@ -25,7 +26,7 @@ namespace RELib_LTScsDemo
     /// <summary>
     /// 主键类
     /// </summary>
-   public class EntityKey
+    public class EntityKey
     {
         private string id = String.Empty;
 
@@ -45,7 +46,7 @@ namespace RELib_LTScsDemo
 
         public override string ToString()
         {
-            return id+"#"+exchangeID;
+            return id + "#" + exchangeID;
         }
         private string sessionID = string.Empty;
 
@@ -54,24 +55,32 @@ namespace RELib_LTScsDemo
             get { return sessionID; }
             set { sessionID = value; }
         }
-       /// <summary>
-       /// 等于
-       /// </summary>
-       /// <param name="source"></param>
-       /// <param name="target"></param>
-       /// <returns></returns>
-        public static bool operator ==(EntityKey source,EntityKey target)
+
+        public override bool Equals(object obj)
+        {
+            EntityKey target = (EntityKey)obj;
+            if (target != null)
+                return this == target;
+            return false;
+        }
+        /// <summary>
+        /// 等于
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public static bool operator ==(EntityKey source, EntityKey target)
         {
             if (source.id == target.ID && source.exchangeID == target.ExchangeID && source.sessionID == target.sessionID)
                 return true;
             return false;
         }
-       /// <summary>
-       /// 不等于
-       /// </summary>
-       /// <param name="source"></param>
-       /// <param name="target"></param>
-       /// <returns></returns>
+        /// <summary>
+        /// 不等于
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public static bool operator !=(EntityKey source, EntityKey target)
         {
             if (source.id == target.ID && source.exchangeID == target.ExchangeID && source.sessionID == target.sessionID)

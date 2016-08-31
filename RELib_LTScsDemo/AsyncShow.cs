@@ -1,17 +1,15 @@
 ﻿/*!
-* \file AsyncShowCallbackData.cs
+* \file AsyncShow.cs
 * \brief 示例代码主程序接口
 *
-* 本项目是基于华宝技术LTS证券接口开发的示例程序，用于展示如何在LTS
-* 环境下进行开发。示例代码演示了LTS各类接口的调用，在编写相关项目时
-* 可以参考。
+* 本项目是基于华宝技术LTS证券接口C#开发的示例程序，用于展示LTS如何在DoNet环境下用C#进行开发。示例代码演示了LTS各类接口C#的调用，在编写相关项目时可以参考。
 * 由尔易信息提供开源，最新代码可从http://github.com/REInfo获取。
-* 上海尔易信息科技有限公司提供证券、期货、期权、现货等市场交易、结算、
-* 风控业务的客户化定制服务。
+* 上海尔易信息科技有限公司提供证券、期货、期权、现货等市场交易、结算、 风控业务的客户化定制服务。
 *
-* \author Christian
-* \version 1.0
-* \date 2014-6-16
+* \author wywty
+* \version 1.1
+* \date 2014-11-05
+* LTS_C#用户群: 317176423
 * 
 */
 
@@ -61,6 +59,11 @@ namespace RELib_LTScsDemo
         }
 
         public AsyncDone Done
+        {
+            get;
+            set;
+        }
+        public AsyncDone OK
         {
             get;
             set;
@@ -151,11 +154,19 @@ namespace RELib_LTScsDemo
                 }),
                
                 Done = new AsyncDone(() =>
-                {
+                {//关闭窗口命令
                     ctl.Invoke(new Action(() =>
                     {
                         if (ctl is Form)
                             (ctl as Form).Close();
+                    }));
+                }),
+                OK = new AsyncDone(() =>
+                {//窗口的确定命令
+                    ctl.Invoke(new Action(() =>
+                    {
+                        if (ctl is Form)
+                            (ctl as Form).DialogResult = System.Windows.Forms.DialogResult.OK;
                     }));
                 }),
                 Abort = false

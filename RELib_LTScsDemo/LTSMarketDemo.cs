@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using RELib_LTScs;
+using RELib_LTSNet;
 using System.Diagnostics;
 
 namespace RELib_LTScsDemo
@@ -16,7 +16,7 @@ namespace RELib_LTScsDemo
         private LTSMDAdapter marketDataApi = null;
         private string marketDrontAddress = "tcp://211.144.195.163:34513";  // 行情前置地址
         private string BrokerID = "2011";                       // 经纪公司代码
-        private string UserID = "010000052414";                 // 投资者代码
+        private string UserID = "xxxxxxxxxxxxx";                 // 投资者代码
         private string Password = "123321";                     // 用户密码
         // 大连,上海代码为小写
         // 郑州,中金所代码为大写
@@ -66,7 +66,7 @@ namespace RELib_LTScsDemo
 
             try
             {
-                marketDataApi.RegisterFront(marketDrontAddress);
+                marketDataApi.RegisterFront(SysConst.MarketDataFrontAddress);
                 marketDataApi.Init();
             }
             catch (Exception e)
@@ -94,8 +94,8 @@ namespace RELib_LTScsDemo
         {
             SecurityFtdcReqUserLoginField req = new SecurityFtdcReqUserLoginField();
             req.BrokerID = BrokerID;
-            req.UserID = UserID;
-            req.Password = Password;
+            req.UserID = SysConst.ClientID;
+            req.Password = SysConst.MarketPassord;
             int iResult = marketDataApi.ReqUserLogin(req, ++iRequestID);
 
             String msg = "--->>> 发送用户登录请求: " + ((iResult == 0) ? "成功" : "失败");
@@ -284,7 +284,7 @@ namespace RELib_LTScsDemo
         /// </summary>
         void UnSubscribeMarketData()
         {
-            int iResult = marketDataApi.UnSubscribeMarketData(ppInstrumentID, 9, "SSE");
+            int iResult = marketDataApi.UnSubscribeMarketData(ppInstrumentID, 9, "sse");
             String msg = "\n--->>> 发送取消行情订阅请求: " + ((iResult == 0) ? "成功" : "失败");
             MarketLabel.Text += msg;
             Debug.WriteLine(msg);
