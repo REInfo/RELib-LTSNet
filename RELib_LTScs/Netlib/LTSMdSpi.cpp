@@ -8,16 +8,18 @@
 #include "LTSMdSpi.h"
 
 
-namespace LTSNative
+
+
+namespace RELib_LTSNative
 {
 	CLTSMdSpi::CLTSMdSpi(LTSMDAdapter^ pAdapter) {
-#ifndef __CTP_MA__
+#ifndef __LTS_MA__
 		m_pAdapter = pAdapter;
 #endif
 
 	};
 
-#ifdef __CTP_MA__
+#ifdef __LTS_MA__
 
 	///当客户端与交易后台建立起通信连接时（还未登录前），该方法被调用。
 	void CLTSMdSpi::OnFrontConnected(){
@@ -40,8 +42,6 @@ namespace LTSNative
 	void CLTSMdSpi::OnHeartBeatWarning(int nTimeLapse){
 		p_OnHeartBeatWarning(nTimeLapse);
 	};
-
-
 	
 
 	/// <summary>
@@ -62,121 +62,26 @@ namespace LTSNative
 	void CLTSMdSpi::OnRspUserLogout(CSecurityFtdcUserLogoutField *pUserLogout,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
 		p_OnRspUserLogout(pUserLogout,pRspInfo,nRequestID,bIsLast);
 	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspOrderInsert(pInputOrder,pRspInfo,nRequestID,bIsLast);
+
+
+	///订阅行情应答
+	void CLTSMdSpi::OnRspSubMarketData(CSecurityFtdcSpecificInstrumentField *pSpecificInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){
+		p_OnRspSubMarketData(pSpecificInstrument,pRspInfo, nRequestID, bIsLast);
 	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspOrderAction(CSecurityFtdcInputOrderActionField *pInputOrderAction,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspOrderAction(pInputOrderAction,pRspInfo,nRequestID,bIsLast);
+
+	///取消订阅行情应答
+	void CLTSMdSpi::OnRspUnSubMarketData(CSecurityFtdcSpecificInstrumentField *pSpecificInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){
+		p_OnRspUnSubMarketData(pSpecificInstrument, pRspInfo, nRequestID, bIsLast);
 	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspUserPasswordUpdate(CSecurityFtdcUserPasswordUpdateField *pUserPasswordUpdate,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspUserPasswordUpdate(pUserPasswordUpdate,pRspInfo,nRequestID,bIsLast);
+
+	///深度行情通知
+	void CLTSMdSpi::OnRtnDepthMarketData(CSecurityFtdcDepthMarketDataField *pDepthMarketData){
+		p_OnRtnDepthMarketData(pDepthMarketData);
 	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspTradingAccountPasswordUpdate(CSecurityFtdcTradingAccountPasswordUpdateField *pTradingAccountPasswordUpdate,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspTradingAccountPasswordUpdate(pTradingAccountPasswordUpdate,pRspInfo,nRequestID,bIsLast);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspQryExchange(CSecurityFtdcExchangeField *pExchange,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspQryExchange(pExchange,pRspInfo,nRequestID,bIsLast);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspQryInstrument(CSecurityFtdcInstrumentField *pInstrument,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspQryInstrument(pInstrument,pRspInfo,nRequestID,bIsLast);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspQryInvestor(CSecurityFtdcInvestorField *pInvestor,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspQryInvestor(pInvestor,pRspInfo,nRequestID,bIsLast);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspQryTradingCode(CSecurityFtdcTradingCodeField *pTradingCode,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspQryTradingCode(pTradingCode,pRspInfo,nRequestID,bIsLast);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspQryTradingAccount(CSecurityFtdcTradingAccountField *pTradingAccount,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspQryTradingAccount(pTradingAccount,pRspInfo,nRequestID,bIsLast);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspQryDepthMarketData(CSecurityFtdcDepthMarketDataField *pDepthMarketData,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspQryDepthMarketData(pDepthMarketData,pRspInfo,nRequestID,bIsLast);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspQryInvestorPositionDetail(CSecurityFtdcInvestorPositionDetailField *pInvestorPositionDetail,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspQryInvestorPositionDetail(pInvestorPositionDetail,pRspInfo,nRequestID,bIsLast);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspQryBondInterest(CSecurityFtdcBondInterestField *pBondInterest,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspQryBondInterest(pBondInterest,pRspInfo,nRequestID,bIsLast);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspQryOrder(CSecurityFtdcOrderField *pOrder,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspQryOrder(pOrder,pRspInfo,nRequestID,bIsLast);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspQryTrade(CSecurityFtdcTradeField *pTrade,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspQryTrade(pTrade,pRspInfo,nRequestID,bIsLast);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRspQryInvestorPosition(CSecurityFtdcInvestorPositionField *pInvestorPosition,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
-		p_OnRspQryInvestorPosition(pInvestorPosition,pRspInfo,nRequestID,bIsLast);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRtnOrder(CSecurityFtdcOrderField *pOrder,CSecurityFtdcOrderField *pOrder){
-		p_OnRtnOrder(pOrder,pOrder);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnRtnTrade(CSecurityFtdcTradeField *pTrade,CSecurityFtdcTradeField *pTrade){
-		p_OnRtnTrade(pTrade,pTrade);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnErrRtnOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,CSecurityFtdcRspInfoField *pRspInfo){
-		p_OnErrRtnOrderInsert(pInputOrder,pRspInfo);
-	};
-	/// <summary>
-	/// 
-	/// </summary>
-	void CLTSMdSpi::OnErrRtnOrderAction(CSecurityFtdcOrderActionField *pOrderAction,CSecurityFtdcRspInfoField *pRspInfo){
-		p_OnErrRtnOrderAction(pOrderAction,pRspInfo);
-	};
-#else
+	
+	
+
+									   #else
 	///当客户端与交易后台建立起通信连接时（还未登录前），该方法被调用。
 	void CLTSMdSpi::OnFrontConnected(){
 		m_pAdapter->OnFrontConnected();
@@ -200,6 +105,23 @@ namespace LTSNative
 	};
 	
 
+			///订阅行情应答
+	void CLTSMdSpi::OnRspSubMarketData(CSecurityFtdcSpecificInstrumentField *pSpecificInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){
+		m_pAdapter->OnRspSubMarketData(MNConv<SecurityFtdcSpecificInstrumentField^, CSecurityFtdcSpecificInstrumentField>::N2M(pSpecificInstrument), RspInfoField(pRspInfo), nRequestID, bIsLast);
+	};
+
+	///取消订阅行情应答
+	void CLTSMdSpi::OnRspUnSubMarketData(CSecurityFtdcSpecificInstrumentField *pSpecificInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){
+		m_pAdapter->OnRspUnSubMarketData(MNConv<SecurityFtdcSpecificInstrumentField^, CSecurityFtdcSpecificInstrumentField>::N2M(pSpecificInstrument), RspInfoField(pRspInfo), nRequestID, bIsLast);
+	};
+
+	///深度行情通知
+	void CLTSMdSpi::OnRtnDepthMarketData(CSecurityFtdcDepthMarketDataField *pDepthMarketData){
+		/*SecurityFtdcDepthMarketDataField^ field = safe_cast<SecurityFtdcDepthMarketDataField^>(Marshal::PtrToStructure(IntPtr(pDepthMarketData), SecurityFtdcDepthMarketDataField::typeid));
+		m_pAdapter->OnRtnDepthMarketData(field);*/
+		m_pAdapter->OnRtnDepthMarketData(MNConv<SecurityFtdcDepthMarketDataField^, CSecurityFtdcDepthMarketDataField>::N2M(pDepthMarketData));
+	};
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -218,26 +140,9 @@ namespace LTSNative
 	void CLTSMdSpi::OnRspUserLogout(CSecurityFtdcUserLogoutField *pUserLogout,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast){
 		m_pAdapter->OnRspUserLogout(MNConv<SecurityFtdcUserLogoutField^, CSecurityFtdcUserLogoutField>::N2M(pUserLogout),RspInfoField(pRspInfo),nRequestID,bIsLast);
 	};
+
+									   
 	
-	
-
-	///订阅行情应答
-	void CLTSMdSpi::OnRspSubMarketData(CSecurityFtdcSpecificInstrumentField *pSpecificInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){
-		m_pAdapter->OnRspSubMarketData(MNConv<SecurityFtdcSpecificInstrumentField^, CSecurityFtdcSpecificInstrumentField>::N2M(pSpecificInstrument), RspInfoField(pRspInfo), nRequestID, bIsLast);
-	};
-
-	///取消订阅行情应答
-	void CLTSMdSpi::OnRspUnSubMarketData(CSecurityFtdcSpecificInstrumentField *pSpecificInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){
-		m_pAdapter->OnRspUnSubMarketData(MNConv<SecurityFtdcSpecificInstrumentField^, CSecurityFtdcSpecificInstrumentField>::N2M(pSpecificInstrument), RspInfoField(pRspInfo), nRequestID, bIsLast);
-	};
-
-	///深度行情通知
-	void CLTSMdSpi::OnRtnDepthMarketData(CSecurityFtdcDepthMarketDataField *pDepthMarketData){
-		/*SecurityFtdcDepthMarketDataField^ field = safe_cast<SecurityFtdcDepthMarketDataField^>(Marshal::PtrToStructure(IntPtr(pDepthMarketData), SecurityFtdcDepthMarketDataField::typeid));
-		m_pAdapter->OnRtnDepthMarketData(field);*/
-		m_pAdapter->OnRtnDepthMarketData(MNConv<SecurityFtdcDepthMarketDataField^, CSecurityFtdcDepthMarketDataField>::N2M(pDepthMarketData));
-	};
-
 #endif
 
 };

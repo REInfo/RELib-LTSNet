@@ -1,3 +1,17 @@
+/*!
+* \file Util.cpp
+* \brief 示例代码主程序接口
+*
+* 本项目是基于华宝技术LTS证券接口C#开发的示例程序，用于展示LTS如何在DoNet环境下用C#进行开发。示例代码演示了LTS各类接口C#的调用，在编写相关项目时可以参考。
+* 由尔易信息提供开源，最新代码可从http://github.com/REInfo获取。
+* 上海尔易信息科技有限公司提供证券、期货、期权、现货等市场交易、结算、 风控业务的客户化定制服务。
+*
+* \author wywty
+* \version 1.0
+* \date 2014-6-30
+* 
+*/
+
 #include "StdAfx.h"
 #include "Util.h"
 
@@ -7,7 +21,7 @@
 
 using namespace System::Runtime::InteropServices;
 
-namespace LTSNative
+namespace RELib_LTSNative
 {
 	CAutoStrPtr::CAutoStrPtr(String^ str)
 	{

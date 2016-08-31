@@ -1,7 +1,7 @@
 
 #pragma once
 
-namespace RELib_LTScs
+namespace RELib_LTSNet
 {
 
 	// common deleagats
@@ -21,18 +21,15 @@ namespace RELib_LTScs
 	///@param nTimeLapse 距离上次接收报文的时间
 	public delegate  void HeartBeatWarning(int nTimeLapse);
 
+	///报文回调开始通知。当API收到一个报文后，首先调用本方法，然后是各数据域的回调，最后是报文回调结束通知。
+	///@param nTopicID 主题代码（如私有流、公共流、行情流等）
+	///@param nSequenceNo 报文序号
+	public delegate  void PackageStart(int nTopicID, int nSequenceNo);
 
-
-	
-
-	///错误应答
-	public delegate void RspError(SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///登录请求响应
-	public delegate void RspUserLogin(SecurityFtdcRspUserLoginField^ pRspUserLogin, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///登出请求响应
-	public delegate void RspUserLogout(SecurityFtdcUserLogoutField^ pUserLogout, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	///报文回调结束通知。当API收到一个报文后，首先调用报文回调开始通知，然后是各数据域的回调，最后调用本方法。
+	///@param nTopicID 主题代码（如私有流、公共流、行情流等）
+	///@param nSequenceNo 报文序号
+	public delegate  void PackageEnd(int nTopicID, int nSequenceNo);
 
 	///订阅行情应答
 	public delegate void RspSubMarketData(SecurityFtdcSpecificInstrumentField^ pSpecificInstrument, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
@@ -43,65 +40,223 @@ namespace RELib_LTScs
 	///深度行情通知
 	public delegate void RtnDepthMarketData(SecurityFtdcDepthMarketDataField^ pDepthMarketData);
 
-	///报单录入请求响应
-	public delegate void RspOrderInsert(SecurityFtdcInputOrderField^ pInputOrder, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
 
-	///报单操作请求响应
-	public delegate void RspOrderAction(SecurityFtdcInputOrderActionField^ pInputOrderAction, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspError(SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspUserLogin(SecurityFtdcRspUserLoginField^ pRspUserLogin, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspUserLogout(SecurityFtdcUserLogoutField^ pUserLogout, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspFetchAuthRandCode(SecurityFtdcAuthRandCodeField^ pAuthRandCode, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspOrderInsert(SecurityFtdcInputOrderField^ pInputOrder, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspOrderAction(SecurityFtdcInputOrderActionField^ pInputOrderAction, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspUserPasswordUpdate(SecurityFtdcUserPasswordUpdateField^ pUserPasswordUpdate, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspTradingAccountPasswordUpdate(SecurityFtdcTradingAccountPasswordUpdateField^ pTradingAccountPasswordUpdate, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RtnOrder(SecurityFtdcOrderField^ pOrder);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RtnTrade(SecurityFtdcTradeField^ pTrade);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  ErrRtnOrderInsert(SecurityFtdcInputOrderField^ pInputOrder, SecurityFtdcRspInfoField^ pRspInfo);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  ErrRtnOrderAction(SecurityFtdcOrderActionField^ pOrderAction, SecurityFtdcRspInfoField^ pRspInfo);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspFundOutByLiber(SecurityFtdcInputFundTransferField^ pInputFundTransfer, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RtnFundOutByLiber(SecurityFtdcFundTransferField^ pFundTransfer);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  ErrRtnFundOutByLiber(SecurityFtdcInputFundTransferField^ pInputFundTransfer, SecurityFtdcRspInfoField^ pRspInfo);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RtnFundInByBank(SecurityFtdcFundTransferField^ pFundTransfer);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspFundInterTransfer(SecurityFtdcFundInterTransferField^ pFundInterTransfer, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RtnFundInterTransferSerial(SecurityFtdcFundInterTransferSerialField^ pFundInterTransferSerial);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  ErrRtnFundInterTransfer(SecurityFtdcFundInterTransferField^ pFundInterTransfer, SecurityFtdcRspInfoField^ pRspInfo);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RtnPlatformStateInfo(SecurityFtdcPlatformStateInfoField^ pPlatformStateInfo);
 
-	///用户口令更新请求响应
-	public delegate void RspUserPasswordUpdate(SecurityFtdcUserPasswordUpdateField^ pUserPasswordUpdate, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	///#region Query
 
-	///资金账户口令更新请求响应
-	public delegate void RspTradingAccountPasswordUpdate(SecurityFtdcTradingAccountPasswordUpdateField^ pTradingAccountPasswordUpdate, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	//public delegate void  RspError(SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	//public delegate void  RspUserLogin(SecurityFtdcRspUserLoginField^ pRspUserLogin, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	//public delegate void  RspUserLogout(SecurityFtdcUserLogoutField^ pUserLogout, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	//public delegate void  RspFetchAuthRandCode(SecurityFtdcAuthRandCodeField^ pAuthRandCode, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryExchange(SecurityFtdcExchangeField^ pExchange, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryInstrument(SecurityFtdcInstrumentField^ pInstrument, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryInvestor(SecurityFtdcInvestorField^ pInvestor, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryTradingCode(SecurityFtdcTradingCodeField^ pTradingCode, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryTradingAccount(SecurityFtdcTradingAccountField^ pTradingAccount, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryBondInterest(SecurityFtdcBondInterestField^ pBondInterest, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryMarketRationInfo(SecurityFtdcMarketRationInfoField^ pMarketRationInfo, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryInstrumentCommissionRate(SecurityFtdcInstrumentCommissionRateField^ pInstrumentCommissionRate, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryETFInstrument(SecurityFtdcETFInstrumentField^ pETFInstrument, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryETFBasket(SecurityFtdcETFBasketField^ pETFBasket, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryOFInstrument(SecurityFtdcOFInstrumentField^ pOFInstrument, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQrySFInstrument(SecurityFtdcSFInstrumentField^ pSFInstrument, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryInstrumentUnitMargin(SecurityFtdcInstrumentUnitMarginField^ pInstrumentUnitMargin, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryPreDelivInfo(SecurityFtdcPreDelivInfoField^ pPreDelivInfo, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryCreditStockAssignInfo(SecurityFtdcCreditStockAssignInfoField^ pCreditStockAssignInfo, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryCreditCashAssignInfo(SecurityFtdcCreditCashAssignInfoField^ pCreditCashAssignInfo, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryConversionRate(SecurityFtdcConversionRateField^ pConversionRate, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryHisCreditDebtInfo(SecurityFtdcHisCreditDebtInfoField^ pHisCreditDebtInfo, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryMarketDataStaticInfo(SecurityFtdcMarketDataStaticInfoField^ pMarketDataStaticInfo, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryExpireRepurchInfo(SecurityFtdcExpireRepurchInfoField^ pExpireRepurchInfo, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryBondPledgeRate(SecurityFtdcBondPledgeRateField^ pBondPledgeRate, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryPledgeBond(SecurityFtdcPledgeBondField^ pPledgeBond, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryHKBasicInfo(SecurityFtdcHKBasicInfoField^ pHKBasicInfo, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryOrder(SecurityFtdcOrderField^ pOrder, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryTrade(SecurityFtdcTradeField^ pTrade, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryInvestorPosition(SecurityFtdcInvestorPositionField^ pInvestorPosition, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryFundTransferSerial(SecurityFtdcFundTransferField^ pFundTransfer, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	public delegate void  RspQryFundInterTransferSerial(SecurityFtdcFundInterTransferSerialField^ pFundInterTransferSerial, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
 
-	///请求查询交易所响应
-	public delegate void RspQryExchange(SecurityFtdcExchangeField^ pExchange, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///请求查询合约响应
-	public delegate void RspQryInstrument(SecurityFtdcInstrumentField^ pInstrument, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///请求查询投资者响应
-	public delegate void RspQryInvestor(SecurityFtdcInvestorField^ pInvestor, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///请求查询交易编码响应
-	public delegate void RspQryTradingCode(SecurityFtdcTradingCodeField^ pTradingCode, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///请求查询资金账户响应
-	public delegate void RspQryTradingAccount(SecurityFtdcTradingAccountField^ pTradingAccount, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///请求查询行情响应
-	public delegate void RspQryDepthMarketData(SecurityFtdcDepthMarketDataField^ pDepthMarketData, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///请求查询投资者持仓明细响应
-	public delegate void RspQryInvestorPositionDetail(SecurityFtdcInvestorPositionDetailField^ pInvestorPositionDetail, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///请求查询债券利息响应
-	public delegate void RspQryBondInterest(SecurityFtdcBondInterestField^ pBondInterest, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///请求查询报单响应
-	public delegate void RspQryOrder(SecurityFtdcOrderField^ pOrder, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///请求查询成交响应
-	public delegate void RspQryTrade(SecurityFtdcTradeField^ pTrade, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///请求查询投资者持仓响应
-	public delegate void RspQryInvestorPosition(SecurityFtdcInvestorPositionField^ pInvestorPosition, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast);
-
-	///报单通知
-	public delegate void RtnOrder(SecurityFtdcOrderField^ pOrder);
-
-	///成交通知
-	public delegate void RtnTrade(SecurityFtdcTradeField^ pTrade);
-
-	///报单录入错误回报
-	public delegate void ErrRtnOrderInsert(SecurityFtdcInputOrderField^ pInputOrder, SecurityFtdcRspInfoField^ pRspInfo);
-
-	///报单操作错误回报
-	public delegate void ErrRtnOrderAction(SecurityFtdcOrderActionField^ pOrderAction, SecurityFtdcRspInfoField^ pRspInfo);
+	///#endregion
 };
 
-#ifdef __CTP_MA__
+#ifdef __LTS_MA__
 
 namespace LTSNative
 {
@@ -147,6 +302,10 @@ namespace LTSNative
 	/// <summary>
 	/// 
 	/// </summary>
+	delegate void Internal_RspFetchAuthRandCode(CSecurityFtdcAuthRandCodeField *pAuthRandCode,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
 	delegate void Internal_RspOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
 	/// <summary>
 	/// 
@@ -160,6 +319,72 @@ namespace LTSNative
 	/// 
 	/// </summary>
 	delegate void Internal_RspTradingAccountPasswordUpdate(CSecurityFtdcTradingAccountPasswordUpdateField *pTradingAccountPasswordUpdate,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RtnOrder(CSecurityFtdcOrderField *pOrder);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RtnTrade(CSecurityFtdcTradeField *pTrade);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_ErrRtnOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,CSecurityFtdcRspInfoField *pRspInfo);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_ErrRtnOrderAction(CSecurityFtdcOrderActionField *pOrderAction,CSecurityFtdcRspInfoField *pRspInfo);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspFundOutByLiber(CSecurityFtdcInputFundTransferField *pInputFundTransfer,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RtnFundOutByLiber(CSecurityFtdcFundTransferField *pFundTransfer);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_ErrRtnFundOutByLiber(CSecurityFtdcInputFundTransferField *pInputFundTransfer,CSecurityFtdcRspInfoField *pRspInfo);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RtnFundInByBank(CSecurityFtdcFundTransferField *pFundTransfer);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspFundInterTransfer(CSecurityFtdcFundInterTransferField *pFundInterTransfer,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RtnFundInterTransferSerial(CSecurityFtdcFundInterTransferSerialField *pFundInterTransferSerial);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_ErrRtnFundInterTransfer(CSecurityFtdcFundInterTransferField *pFundInterTransfer,CSecurityFtdcRspInfoField *pRspInfo);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RtnPlatformStateInfo(CSecurityFtdcPlatformStateInfoField *pPlatformStateInfo);
+
+	///region Query
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspError(CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspUserLogin(CSecurityFtdcRspUserLoginField *pRspUserLogin,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspUserLogout(CSecurityFtdcUserLogoutField *pUserLogout,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspFetchAuthRandCode(CSecurityFtdcAuthRandCodeField *pAuthRandCode,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
 	/// <summary>
 	/// 
 	/// </summary>
@@ -183,15 +408,75 @@ namespace LTSNative
 	/// <summary>
 	/// 
 	/// </summary>
-	delegate void Internal_RspQryDepthMarketData(CSecurityFtdcDepthMarketDataField *pDepthMarketData,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
-	/// <summary>
-	/// 
-	/// </summary>
-	delegate void Internal_RspQryInvestorPositionDetail(CSecurityFtdcInvestorPositionDetailField *pInvestorPositionDetail,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
-	/// <summary>
-	/// 
-	/// </summary>
 	delegate void Internal_RspQryBondInterest(CSecurityFtdcBondInterestField *pBondInterest,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryMarketRationInfo(CSecurityFtdcMarketRationInfoField *pMarketRationInfo,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryInstrumentCommissionRate(CSecurityFtdcInstrumentCommissionRateField *pInstrumentCommissionRate,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryETFInstrument(CSecurityFtdcETFInstrumentField *pETFInstrument,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryETFBasket(CSecurityFtdcETFBasketField *pETFBasket,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryOFInstrument(CSecurityFtdcOFInstrumentField *pOFInstrument,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQrySFInstrument(CSecurityFtdcSFInstrumentField *pSFInstrument,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryInstrumentUnitMargin(CSecurityFtdcInstrumentUnitMarginField *pInstrumentUnitMargin,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryPreDelivInfo(CSecurityFtdcPreDelivInfoField *pPreDelivInfo,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryCreditStockAssignInfo(CSecurityFtdcCreditStockAssignInfoField *pCreditStockAssignInfo,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryCreditCashAssignInfo(CSecurityFtdcCreditCashAssignInfoField *pCreditCashAssignInfo,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryConversionRate(CSecurityFtdcConversionRateField *pConversionRate,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryHisCreditDebtInfo(CSecurityFtdcHisCreditDebtInfoField *pHisCreditDebtInfo,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryMarketDataStaticInfo(CSecurityFtdcMarketDataStaticInfoField *pMarketDataStaticInfo,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryExpireRepurchInfo(CSecurityFtdcExpireRepurchInfoField *pExpireRepurchInfo,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryBondPledgeRate(CSecurityFtdcBondPledgeRateField *pBondPledgeRate,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryPledgeBond(CSecurityFtdcPledgeBondField *pPledgeBond,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+	/// <summary>
+	/// 
+	/// </summary>
+	delegate void Internal_RspQryHKBasicInfo(CSecurityFtdcHKBasicInfoField *pHKBasicInfo,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
 	/// <summary>
 	/// 
 	/// </summary>
@@ -207,19 +492,13 @@ namespace LTSNative
 	/// <summary>
 	/// 
 	/// </summary>
-	delegate void Internal_RtnOrder(CSecurityFtdcOrderField *pOrder);
+	delegate void Internal_RspQryFundTransferSerial(CSecurityFtdcFundTransferField *pFundTransfer,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
 	/// <summary>
 	/// 
 	/// </summary>
-	delegate void Internal_RtnTrade(CSecurityFtdcTradeField *pTrade);
-	/// <summary>
-	/// 
-	/// </summary>
-	delegate void Internal_ErrRtnOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,CSecurityFtdcRspInfoField *pRspInfo);
-	/// <summary>
-	/// 
-	/// </summary>
-	delegate void Internal_ErrRtnOrderAction(CSecurityFtdcOrderActionField *pOrderAction,CSecurityFtdcRspInfoField *pRspInfo);
+	delegate void Internal_RspQryFundInterTransferSerial(CSecurityFtdcFundInterTransferSerialField *pFundInterTransferSerial,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+
+	///#endregion
 };
 
 #endif

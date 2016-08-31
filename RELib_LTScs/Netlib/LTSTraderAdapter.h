@@ -4,35 +4,36 @@
 #include "Util.h"
 #include "LTSTraderSpi.h"
 
-using namespace LTSNative;
 
-namespace  LTSNative{
+using namespace RELib_LTSNative;
+
+namespace  RELib_LTSNative{
 	class CLTSTraderSpi;
 };
 
 
-namespace RELib_LTScs
+namespace RELib_LTSNet
 {
 
 	/// <summary>
 	/// 托管类,TraderAPI Adapter
 	/// </summary>
-	public ref class LTSTraderAdapter
+	public ref class CLTSTraderAdapter
 	{
 	public:
 		/// <summary>
 		///创建CTPTraderAdapter
 		///存贮订阅信息文件的目录，默认为当前目录
 		/// </summary>
-		LTSTraderAdapter(void);
+		CLTSTraderAdapter(void);
 		/// <summary>
 		///创建CTPTraderAdapter
 		/// </summary>
 		/// <param name="pszFlowPath">存贮订阅信息文件的目录，默认为当前目录</param>
 		/// <param name="bIsUsingUdp">是否使用UDP协议</param>
-		LTSTraderAdapter(String^ pszFlowPath,String^ pszUserApiType);
+		CLTSTraderAdapter(String^ pszFlowPath, String^ pszUserApiType);
 	private:
-		~LTSTraderAdapter(void);
+		~CLTSTraderAdapter(void);
 		CSecurityFtdcTraderApi* m_pApi;
 		CLTSTraderSpi* m_pSpi;
 	public:
@@ -60,22 +61,32 @@ namespace RELib_LTScs
 		void RegisterFront(String^ pszFrontAddress);
 
 
+
 		///订阅私有流。
 		///@param nResumeType 私有流重传方式  
-		///        SECURITY_TERT_RESTART:从本交易日开始重传
-		///        SECURITY_TERT_RESUME:从上次收到的续传
-		///        SECURITY_TERT_QUICK:只传送登录后私有流的内容
+		///        TERT_RESTART:从本交易日开始重传
+		///        TERT_RESUME:从上次收到的续传
+		///        TERT_QUICK:只传送登录后私有流的内容
 		///@remark 该方法要在Init方法前调用。若不调用则不会收到私有流的数据。
 		void SubscribePrivateTopic(EnumRESUMETYPE nResumeType);
 
 		///订阅公共流。
 		///@param nResumeType 公共流重传方式  
-		///        SECURITY_TERT_RESTART:从本交易日开始重传
-		///        SECURITY_TERT_RESUME:从上次收到的续传
-		///        SECURITY_TERT_QUICK:只传送登录后公共流的内容
+		///        TERT_RESTART:从本交易日开始重传
+		///        TERT_RESUME:从上次收到的续传
+		///        TERT_QUICK:只传送登录后公共流的内容
 		///@remark 该方法要在Init方法前调用。若不调用则不会收到公共流的数据。
 		void SubscribePublicTopic(EnumRESUMETYPE nResumeType);
-		
+
+		///订阅交易员流。
+		///@param nResumeType 交易员流重传方式  
+		///        TERT_RESTART:从本交易日开始重传
+		///        TERT_RESUME:从上次收到的续传
+		///        TERT_QUICK:只传送登录后交易员流的内容
+		///@remark 该方法要在Init方法前调用。若不调用则不会收到交易员流的数据。
+		//void SubscribeUserTopic(EnumRESUMETYPE nResumeType);
+
+
 
 		///用户登录请求
 		int ReqUserLogin(SecurityFtdcReqUserLoginField^ pReqUserLoginField, int nRequestID);
@@ -84,67 +95,35 @@ namespace RELib_LTScs
 		/// <summary>
 		/// 
 		/// </summary>
-		int ReqUserLogout(SecurityFtdcUserLogoutField^ pUserLogout, int nRequestID);
+		int  ReqUserLogout(SecurityFtdcUserLogoutField^ pUserLogout, int nRequestID);
 		/// <summary>
 		/// 
 		/// </summary>
-		int ReqOrderInsert(SecurityFtdcInputOrderField^ pInputOrder, int nRequestID);
+		int  ReqFetchAuthRandCode(SecurityFtdcAuthRandCodeField^ pAuthRandCode, int nRequestID);
 		/// <summary>
 		/// 
 		/// </summary>
-		int ReqOrderAction(SecurityFtdcInputOrderActionField^ pInputOrderAction, int nRequestID);
+		int  ReqOrderInsert(SecurityFtdcInputOrderField^ pInputOrder, int nRequestID);
 		/// <summary>
 		/// 
 		/// </summary>
-		int ReqUserPasswordUpdate(SecurityFtdcUserPasswordUpdateField^ pUserPasswordUpdate, int nRequestID);
+		int  ReqOrderAction(SecurityFtdcInputOrderActionField^ pInputOrderAction, int nRequestID);
 		/// <summary>
 		/// 
 		/// </summary>
-		int ReqTradingAccountPasswordUpdate(SecurityFtdcTradingAccountPasswordUpdateField^ pTradingAccountPasswordUpdate, int nRequestID);
+		int  ReqUserPasswordUpdate(SecurityFtdcUserPasswordUpdateField^ pUserPasswordUpdate, int nRequestID);
 		/// <summary>
 		/// 
 		/// </summary>
-		int ReqQryExchange(SecurityFtdcQryExchangeField^ pQryExchange, int nRequestID);
+		int  ReqTradingAccountPasswordUpdate(SecurityFtdcTradingAccountPasswordUpdateField^ pTradingAccountPasswordUpdate, int nRequestID);
 		/// <summary>
 		/// 
 		/// </summary>
-		int ReqQryInstrument(SecurityFtdcQryInstrumentField^ pQryInstrument, int nRequestID);
+		int  ReqFundOutByLiber(SecurityFtdcInputFundTransferField^ pInputFundTransfer, int nRequestID);
 		/// <summary>
 		/// 
 		/// </summary>
-		int ReqQryInvestor(SecurityFtdcQryInvestorField^ pQryInvestor, int nRequestID);
-		/// <summary>
-		/// 
-		/// </summary>
-		int ReqQryTradingCode(SecurityFtdcQryTradingCodeField^ pQryTradingCode, int nRequestID);
-		/// <summary>
-		/// 
-		/// </summary>
-		int ReqQryTradingAccount(SecurityFtdcQryTradingAccountField^ pQryTradingAccount, int nRequestID);
-		/// <summary>
-		/// 
-		/// </summary>
-		int ReqQryDepthMarketData(SecurityFtdcQryDepthMarketDataField^ pQryDepthMarketData, int nRequestID);
-		/// <summary>
-		/// 
-		/// </summary>
-		int ReqQryInvestorPositionDetail(SecurityFtdcQryInvestorPositionDetailField^ pQryInvestorPositionDetail, int nRequestID);
-		/// <summary>
-		/// 
-		/// </summary>
-		int ReqQryBondInterest(SecurityFtdcQryBondInterestField^ pQryBondInterest, int nRequestID);
-		/// <summary>
-		/// 
-		/// </summary>
-		int ReqQryOrder(SecurityFtdcQryOrderField^ pQryOrder, int nRequestID);
-		/// <summary>
-		/// 
-		/// </summary>
-		int ReqQryTrade(SecurityFtdcQryTradeField^ pQryTrade, int nRequestID);
-		/// <summary>
-		/// 
-		/// </summary>
-		int ReqQryInvestorPosition(SecurityFtdcQryInvestorPositionField^ pQryInvestorPosition, int nRequestID);
+		int  ReqFundInterTransfer(SecurityFtdcFundInterTransferField^ pFundInterTransfer, int nRequestID);
 
 		//events
 	public:
@@ -152,14 +131,14 @@ namespace RELib_LTScs
 		/// 当客户端与交易后台建立起通信连接时（还未登录前），该方法被调用。
 		/// </summary>
 		event FrontConnected^ OnFrontConnected {
-			void add(FrontConnected^ handler ) {
+			void add(FrontConnected^ handler) {
 				FrontConnected_delegate += handler;
 			}
 			void remove(FrontConnected^ handler) {
 				FrontConnected_delegate -= handler;
 			}
 			void raise() {
-				if(FrontConnected_delegate)
+				if (FrontConnected_delegate)
 					FrontConnected_delegate();
 			}
 		}
@@ -173,42 +152,43 @@ namespace RELib_LTScs
 		/// 0x2003 收到错误报文
 		/// </summary>
 		event FrontDisconnected^ OnFrontDisconnected {
-			void add(FrontDisconnected^ handler ) {
+			void add(FrontDisconnected^ handler) {
 				FrontDisconnected_delegate += handler;
 			}
 			void remove(FrontDisconnected^ handler) {
 				FrontDisconnected_delegate -= handler;
 			}
 			void raise(int nReason) {
-				if(FrontDisconnected_delegate)
+				if (FrontDisconnected_delegate)
 					FrontDisconnected_delegate(nReason);
 			}
 		}
 		///心跳超时警告。当长时间未收到报文时，该方法被调用。
 		///@param nTimeLapse 距离上次接收报文的时间
 		event HeartBeatWarning^ OnHeartBeatWarning{
-			void add(HeartBeatWarning^ handler ) {
+			void add(HeartBeatWarning^ handler) {
 				HeartBeatWarning_delegate += handler;
 			}
 			void remove(HeartBeatWarning^ handler) {
 				HeartBeatWarning_delegate -= handler;
 			}
 			void raise(int nTimeLapse) {
-				if(HeartBeatWarning_delegate)
+				if (HeartBeatWarning_delegate)
 					HeartBeatWarning_delegate(nTimeLapse);
 			}
 		}
 
 
-		
+
+
 		/// <summary>
 		/// 
 		/// </summary>
 		event RspError^ OnRspError{
 			void add(RspError^ handler) { RspError_delegate += handler; }
 			void remove(RspError^ handler) { RspError_delegate -= handler; }
-			void raise(SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspError_delegate) RspError_delegate(pRspInfo,nRequestID,bIsLast);
+			void raise(SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast) {
+				if (RspError_delegate) RspError_delegate(pRspInfo, nRequestID, bIsLast);
 			}
 		}
 		/// <summary>
@@ -217,8 +197,8 @@ namespace RELib_LTScs
 		event RspUserLogin^ OnRspUserLogin{
 			void add(RspUserLogin^ handler) { RspUserLogin_delegate += handler; }
 			void remove(RspUserLogin^ handler) { RspUserLogin_delegate -= handler; }
-			void raise(SecurityFtdcRspUserLoginField^ pRspUserLogin,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspUserLogin_delegate) RspUserLogin_delegate(pRspUserLogin,pRspInfo,nRequestID,bIsLast);
+			void raise(SecurityFtdcRspUserLoginField^ pRspUserLogin, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast) {
+				if (RspUserLogin_delegate) RspUserLogin_delegate(pRspUserLogin, pRspInfo, nRequestID, bIsLast);
 			}
 		}
 		/// <summary>
@@ -227,8 +207,18 @@ namespace RELib_LTScs
 		event RspUserLogout^ OnRspUserLogout{
 			void add(RspUserLogout^ handler) { RspUserLogout_delegate += handler; }
 			void remove(RspUserLogout^ handler) { RspUserLogout_delegate -= handler; }
-			void raise(SecurityFtdcUserLogoutField^ pUserLogout,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspUserLogout_delegate) RspUserLogout_delegate(pUserLogout,pRspInfo,nRequestID,bIsLast);
+			void raise(SecurityFtdcUserLogoutField^ pUserLogout, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast) {
+				if (RspUserLogout_delegate) RspUserLogout_delegate(pUserLogout, pRspInfo, nRequestID, bIsLast);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		event RspFetchAuthRandCode^ OnRspFetchAuthRandCode{
+			void add(RspFetchAuthRandCode^ handler) { RspFetchAuthRandCode_delegate += handler; }
+			void remove(RspFetchAuthRandCode^ handler) { RspFetchAuthRandCode_delegate -= handler; }
+			void raise(SecurityFtdcAuthRandCodeField^ pAuthRandCode, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast) {
+				if (RspFetchAuthRandCode_delegate) RspFetchAuthRandCode_delegate(pAuthRandCode, pRspInfo, nRequestID, bIsLast);
 			}
 		}
 		/// <summary>
@@ -237,8 +227,8 @@ namespace RELib_LTScs
 		event RspOrderInsert^ OnRspOrderInsert{
 			void add(RspOrderInsert^ handler) { RspOrderInsert_delegate += handler; }
 			void remove(RspOrderInsert^ handler) { RspOrderInsert_delegate -= handler; }
-			void raise(SecurityFtdcInputOrderField^ pInputOrder,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspOrderInsert_delegate) RspOrderInsert_delegate(pInputOrder,pRspInfo,nRequestID,bIsLast);
+			void raise(SecurityFtdcInputOrderField^ pInputOrder, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast) {
+				if (RspOrderInsert_delegate) RspOrderInsert_delegate(pInputOrder, pRspInfo, nRequestID, bIsLast);
 			}
 		}
 		/// <summary>
@@ -247,8 +237,8 @@ namespace RELib_LTScs
 		event RspOrderAction^ OnRspOrderAction{
 			void add(RspOrderAction^ handler) { RspOrderAction_delegate += handler; }
 			void remove(RspOrderAction^ handler) { RspOrderAction_delegate -= handler; }
-			void raise(SecurityFtdcInputOrderActionField^ pInputOrderAction,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspOrderAction_delegate) RspOrderAction_delegate(pInputOrderAction,pRspInfo,nRequestID,bIsLast);
+			void raise(SecurityFtdcInputOrderActionField^ pInputOrderAction, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast) {
+				if (RspOrderAction_delegate) RspOrderAction_delegate(pInputOrderAction, pRspInfo, nRequestID, bIsLast);
 			}
 		}
 		/// <summary>
@@ -257,8 +247,8 @@ namespace RELib_LTScs
 		event RspUserPasswordUpdate^ OnRspUserPasswordUpdate{
 			void add(RspUserPasswordUpdate^ handler) { RspUserPasswordUpdate_delegate += handler; }
 			void remove(RspUserPasswordUpdate^ handler) { RspUserPasswordUpdate_delegate -= handler; }
-			void raise(SecurityFtdcUserPasswordUpdateField^ pUserPasswordUpdate,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspUserPasswordUpdate_delegate) RspUserPasswordUpdate_delegate(pUserPasswordUpdate,pRspInfo,nRequestID,bIsLast);
+			void raise(SecurityFtdcUserPasswordUpdateField^ pUserPasswordUpdate, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast) {
+				if (RspUserPasswordUpdate_delegate) RspUserPasswordUpdate_delegate(pUserPasswordUpdate, pRspInfo, nRequestID, bIsLast);
 			}
 		}
 		/// <summary>
@@ -267,118 +257,8 @@ namespace RELib_LTScs
 		event RspTradingAccountPasswordUpdate^ OnRspTradingAccountPasswordUpdate{
 			void add(RspTradingAccountPasswordUpdate^ handler) { RspTradingAccountPasswordUpdate_delegate += handler; }
 			void remove(RspTradingAccountPasswordUpdate^ handler) { RspTradingAccountPasswordUpdate_delegate -= handler; }
-			void raise(SecurityFtdcTradingAccountPasswordUpdateField^ pTradingAccountPasswordUpdate,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspTradingAccountPasswordUpdate_delegate) RspTradingAccountPasswordUpdate_delegate(pTradingAccountPasswordUpdate,pRspInfo,nRequestID,bIsLast);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		event RspQryExchange^ OnRspQryExchange{
-			void add(RspQryExchange^ handler) { RspQryExchange_delegate += handler; }
-			void remove(RspQryExchange^ handler) { RspQryExchange_delegate -= handler; }
-			void raise(SecurityFtdcExchangeField^ pExchange,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspQryExchange_delegate) RspQryExchange_delegate(pExchange,pRspInfo,nRequestID,bIsLast);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		event RspQryInstrument^ OnRspQryInstrument{
-			void add(RspQryInstrument^ handler) { RspQryInstrument_delegate += handler; }
-			void remove(RspQryInstrument^ handler) { RspQryInstrument_delegate -= handler; }
-			void raise(SecurityFtdcInstrumentField^ pInstrument,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspQryInstrument_delegate) RspQryInstrument_delegate(pInstrument,pRspInfo,nRequestID,bIsLast);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		event RspQryInvestor^ OnRspQryInvestor{
-			void add(RspQryInvestor^ handler) { RspQryInvestor_delegate += handler; }
-			void remove(RspQryInvestor^ handler) { RspQryInvestor_delegate -= handler; }
-			void raise(SecurityFtdcInvestorField^ pInvestor,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspQryInvestor_delegate) RspQryInvestor_delegate(pInvestor,pRspInfo,nRequestID,bIsLast);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		event RspQryTradingCode^ OnRspQryTradingCode{
-			void add(RspQryTradingCode^ handler) { RspQryTradingCode_delegate += handler; }
-			void remove(RspQryTradingCode^ handler) { RspQryTradingCode_delegate -= handler; }
-			void raise(SecurityFtdcTradingCodeField^ pTradingCode,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspQryTradingCode_delegate) RspQryTradingCode_delegate(pTradingCode,pRspInfo,nRequestID,bIsLast);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		event RspQryTradingAccount^ OnRspQryTradingAccount{
-			void add(RspQryTradingAccount^ handler) { RspQryTradingAccount_delegate += handler; }
-			void remove(RspQryTradingAccount^ handler) { RspQryTradingAccount_delegate -= handler; }
-			void raise(SecurityFtdcTradingAccountField^ pTradingAccount,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspQryTradingAccount_delegate) RspQryTradingAccount_delegate(pTradingAccount,pRspInfo,nRequestID,bIsLast);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		event RspQryDepthMarketData^ OnRspQryDepthMarketData{
-			void add(RspQryDepthMarketData^ handler) { RspQryDepthMarketData_delegate += handler; }
-			void remove(RspQryDepthMarketData^ handler) { RspQryDepthMarketData_delegate -= handler; }
-			void raise(SecurityFtdcDepthMarketDataField^ pDepthMarketData,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspQryDepthMarketData_delegate) RspQryDepthMarketData_delegate(pDepthMarketData,pRspInfo,nRequestID,bIsLast);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		event RspQryInvestorPositionDetail^ OnRspQryInvestorPositionDetail{
-			void add(RspQryInvestorPositionDetail^ handler) { RspQryInvestorPositionDetail_delegate += handler; }
-			void remove(RspQryInvestorPositionDetail^ handler) { RspQryInvestorPositionDetail_delegate -= handler; }
-			void raise(SecurityFtdcInvestorPositionDetailField^ pInvestorPositionDetail,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspQryInvestorPositionDetail_delegate) RspQryInvestorPositionDetail_delegate(pInvestorPositionDetail,pRspInfo,nRequestID,bIsLast);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		event RspQryBondInterest^ OnRspQryBondInterest{
-			void add(RspQryBondInterest^ handler) { RspQryBondInterest_delegate += handler; }
-			void remove(RspQryBondInterest^ handler) { RspQryBondInterest_delegate -= handler; }
-			void raise(SecurityFtdcBondInterestField^ pBondInterest,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspQryBondInterest_delegate) RspQryBondInterest_delegate(pBondInterest,pRspInfo,nRequestID,bIsLast);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		event RspQryOrder^ OnRspQryOrder{
-			void add(RspQryOrder^ handler) { RspQryOrder_delegate += handler; }
-			void remove(RspQryOrder^ handler) { RspQryOrder_delegate -= handler; }
-			void raise(SecurityFtdcOrderField^ pOrder,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspQryOrder_delegate) RspQryOrder_delegate(pOrder,pRspInfo,nRequestID,bIsLast);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		event RspQryTrade^ OnRspQryTrade{
-			void add(RspQryTrade^ handler) { RspQryTrade_delegate += handler; }
-			void remove(RspQryTrade^ handler) { RspQryTrade_delegate -= handler; }
-			void raise(SecurityFtdcTradeField^ pTrade,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspQryTrade_delegate) RspQryTrade_delegate(pTrade,pRspInfo,nRequestID,bIsLast);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		event RspQryInvestorPosition^ OnRspQryInvestorPosition{
-			void add(RspQryInvestorPosition^ handler) { RspQryInvestorPosition_delegate += handler; }
-			void remove(RspQryInvestorPosition^ handler) { RspQryInvestorPosition_delegate -= handler; }
-			void raise(SecurityFtdcInvestorPositionField^ pInvestorPosition,SecurityFtdcRspInfoField^ pRspInfo,int nRequestID, bool bIsLast) {
-				if(RspQryInvestorPosition_delegate) RspQryInvestorPosition_delegate(pInvestorPosition,pRspInfo,nRequestID,bIsLast);
+			void raise(SecurityFtdcTradingAccountPasswordUpdateField^ pTradingAccountPasswordUpdate, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast) {
+				if (RspTradingAccountPasswordUpdate_delegate) RspTradingAccountPasswordUpdate_delegate(pTradingAccountPasswordUpdate, pRspInfo, nRequestID, bIsLast);
 			}
 		}
 		/// <summary>
@@ -388,7 +268,7 @@ namespace RELib_LTScs
 			void add(RtnOrder^ handler) { RtnOrder_delegate += handler; }
 			void remove(RtnOrder^ handler) { RtnOrder_delegate -= handler; }
 			void raise(SecurityFtdcOrderField^ pOrder) {
-				if(RtnOrder_delegate) RtnOrder_delegate(pOrder);
+				if (RtnOrder_delegate) RtnOrder_delegate(pOrder);
 			}
 		}
 		/// <summary>
@@ -398,7 +278,7 @@ namespace RELib_LTScs
 			void add(RtnTrade^ handler) { RtnTrade_delegate += handler; }
 			void remove(RtnTrade^ handler) { RtnTrade_delegate -= handler; }
 			void raise(SecurityFtdcTradeField^ pTrade) {
-				if(RtnTrade_delegate) RtnTrade_delegate(pTrade);
+				if (RtnTrade_delegate) RtnTrade_delegate(pTrade);
 			}
 		}
 		/// <summary>
@@ -407,8 +287,8 @@ namespace RELib_LTScs
 		event ErrRtnOrderInsert^ OnErrRtnOrderInsert{
 			void add(ErrRtnOrderInsert^ handler) { ErrRtnOrderInsert_delegate += handler; }
 			void remove(ErrRtnOrderInsert^ handler) { ErrRtnOrderInsert_delegate -= handler; }
-			void raise(SecurityFtdcInputOrderField^ pInputOrder,SecurityFtdcRspInfoField^ pRspInfo) {
-				if(ErrRtnOrderInsert_delegate) ErrRtnOrderInsert_delegate(pInputOrder,pRspInfo);
+			void raise(SecurityFtdcInputOrderField^ pInputOrder, SecurityFtdcRspInfoField^ pRspInfo) {
+				if (ErrRtnOrderInsert_delegate) ErrRtnOrderInsert_delegate(pInputOrder, pRspInfo);
 			}
 		}
 		/// <summary>
@@ -417,8 +297,88 @@ namespace RELib_LTScs
 		event ErrRtnOrderAction^ OnErrRtnOrderAction{
 			void add(ErrRtnOrderAction^ handler) { ErrRtnOrderAction_delegate += handler; }
 			void remove(ErrRtnOrderAction^ handler) { ErrRtnOrderAction_delegate -= handler; }
-			void raise(SecurityFtdcOrderActionField^ pOrderAction,SecurityFtdcRspInfoField^ pRspInfo) {
-				if(ErrRtnOrderAction_delegate) ErrRtnOrderAction_delegate(pOrderAction,pRspInfo);
+			void raise(SecurityFtdcOrderActionField^ pOrderAction, SecurityFtdcRspInfoField^ pRspInfo) {
+				if (ErrRtnOrderAction_delegate) ErrRtnOrderAction_delegate(pOrderAction, pRspInfo);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		event RspFundOutByLiber^ OnRspFundOutByLiber{
+			void add(RspFundOutByLiber^ handler) { RspFundOutByLiber_delegate += handler; }
+			void remove(RspFundOutByLiber^ handler) { RspFundOutByLiber_delegate -= handler; }
+			void raise(SecurityFtdcInputFundTransferField^ pInputFundTransfer, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast) {
+				if (RspFundOutByLiber_delegate) RspFundOutByLiber_delegate(pInputFundTransfer, pRspInfo, nRequestID, bIsLast);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		event RtnFundOutByLiber^ OnRtnFundOutByLiber{
+			void add(RtnFundOutByLiber^ handler) { RtnFundOutByLiber_delegate += handler; }
+			void remove(RtnFundOutByLiber^ handler) { RtnFundOutByLiber_delegate -= handler; }
+			void raise(SecurityFtdcFundTransferField^ pFundTransfer) {
+				if (RtnFundOutByLiber_delegate) RtnFundOutByLiber_delegate(pFundTransfer);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		event ErrRtnFundOutByLiber^ OnErrRtnFundOutByLiber{
+			void add(ErrRtnFundOutByLiber^ handler) { ErrRtnFundOutByLiber_delegate += handler; }
+			void remove(ErrRtnFundOutByLiber^ handler) { ErrRtnFundOutByLiber_delegate -= handler; }
+			void raise(SecurityFtdcInputFundTransferField^ pInputFundTransfer, SecurityFtdcRspInfoField^ pRspInfo) {
+				if (ErrRtnFundOutByLiber_delegate) ErrRtnFundOutByLiber_delegate(pInputFundTransfer, pRspInfo);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		event RtnFundInByBank^ OnRtnFundInByBank{
+			void add(RtnFundInByBank^ handler) { RtnFundInByBank_delegate += handler; }
+			void remove(RtnFundInByBank^ handler) { RtnFundInByBank_delegate -= handler; }
+			void raise(SecurityFtdcFundTransferField^ pFundTransfer) {
+				if (RtnFundInByBank_delegate) RtnFundInByBank_delegate(pFundTransfer);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		event RspFundInterTransfer^ OnRspFundInterTransfer{
+			void add(RspFundInterTransfer^ handler) { RspFundInterTransfer_delegate += handler; }
+			void remove(RspFundInterTransfer^ handler) { RspFundInterTransfer_delegate -= handler; }
+			void raise(SecurityFtdcFundInterTransferField^ pFundInterTransfer, SecurityFtdcRspInfoField^ pRspInfo, int nRequestID, bool bIsLast) {
+				if (RspFundInterTransfer_delegate) RspFundInterTransfer_delegate(pFundInterTransfer, pRspInfo, nRequestID, bIsLast);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		event RtnFundInterTransferSerial^ OnRtnFundInterTransferSerial{
+			void add(RtnFundInterTransferSerial^ handler) { RtnFundInterTransferSerial_delegate += handler; }
+			void remove(RtnFundInterTransferSerial^ handler) { RtnFundInterTransferSerial_delegate -= handler; }
+			void raise(SecurityFtdcFundInterTransferSerialField^ pFundInterTransferSerial) {
+				if (RtnFundInterTransferSerial_delegate) RtnFundInterTransferSerial_delegate(pFundInterTransferSerial);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		event ErrRtnFundInterTransfer^ OnErrRtnFundInterTransfer{
+			void add(ErrRtnFundInterTransfer^ handler) { ErrRtnFundInterTransfer_delegate += handler; }
+			void remove(ErrRtnFundInterTransfer^ handler) { ErrRtnFundInterTransfer_delegate -= handler; }
+			void raise(SecurityFtdcFundInterTransferField^ pFundInterTransfer, SecurityFtdcRspInfoField^ pRspInfo) {
+				if (ErrRtnFundInterTransfer_delegate) ErrRtnFundInterTransfer_delegate(pFundInterTransfer, pRspInfo);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		event RtnPlatformStateInfo^ OnRtnPlatformStateInfo{
+			void add(RtnPlatformStateInfo^ handler) { RtnPlatformStateInfo_delegate += handler; }
+			void remove(RtnPlatformStateInfo^ handler) { RtnPlatformStateInfo_delegate -= handler; }
+			void raise(SecurityFtdcPlatformStateInfoField^ pPlatformStateInfo) {
+				if (RtnPlatformStateInfo_delegate) RtnPlatformStateInfo_delegate(pPlatformStateInfo);
 			}
 		}
 
@@ -440,31 +400,29 @@ namespace RELib_LTScs
 		///@param nTimeLapse 距离上次接收报文的时间
 		HeartBeatWarning^ HeartBeatWarning_delegate;
 
-		
+
 
 		RspError^ RspError_delegate;
 		RspUserLogin^ RspUserLogin_delegate;
 		RspUserLogout^ RspUserLogout_delegate;
+		RspFetchAuthRandCode^ RspFetchAuthRandCode_delegate;
 		RspOrderInsert^ RspOrderInsert_delegate;
 		RspOrderAction^ RspOrderAction_delegate;
 		RspUserPasswordUpdate^ RspUserPasswordUpdate_delegate;
 		RspTradingAccountPasswordUpdate^ RspTradingAccountPasswordUpdate_delegate;
-		RspQryExchange^ RspQryExchange_delegate;
-		RspQryInstrument^ RspQryInstrument_delegate;
-		RspQryInvestor^ RspQryInvestor_delegate;
-		RspQryTradingCode^ RspQryTradingCode_delegate;
-		RspQryTradingAccount^ RspQryTradingAccount_delegate;
-		RspQryDepthMarketData^ RspQryDepthMarketData_delegate;
-		RspQryInvestorPositionDetail^ RspQryInvestorPositionDetail_delegate;
-		RspQryBondInterest^ RspQryBondInterest_delegate;
-		RspQryOrder^ RspQryOrder_delegate;
-		RspQryTrade^ RspQryTrade_delegate;
-		RspQryInvestorPosition^ RspQryInvestorPosition_delegate;
 		RtnOrder^ RtnOrder_delegate;
 		RtnTrade^ RtnTrade_delegate;
 		ErrRtnOrderInsert^ ErrRtnOrderInsert_delegate;
 		ErrRtnOrderAction^ ErrRtnOrderAction_delegate;
-#ifdef __CTP_MA__
+		RspFundOutByLiber^ RspFundOutByLiber_delegate;
+		RtnFundOutByLiber^ RtnFundOutByLiber_delegate;
+		ErrRtnFundOutByLiber^ ErrRtnFundOutByLiber_delegate;
+		RtnFundInByBank^ RtnFundInByBank_delegate;
+		RspFundInterTransfer^ RspFundInterTransfer_delegate;
+		RtnFundInterTransferSerial^ RtnFundInterTransferSerial_delegate;
+		ErrRtnFundInterTransfer^ ErrRtnFundInterTransfer_delegate;
+		RtnPlatformStateInfo^ RtnPlatformStateInfo_delegate;
+#ifdef __LTS_MA__
 		// callbacks for MA
 	private:
 		///默认
@@ -485,6 +443,8 @@ namespace RELib_LTScs
 		void cbk_OnHeartBeatWarning(int nTimeLapse);
 
 
+
+
 		/// <summary>
 		/// 
 		/// </summary>
@@ -497,6 +457,10 @@ namespace RELib_LTScs
 		/// 
 		/// </summary>
 		void cbk_OnRspUserLogout(CSecurityFtdcUserLogoutField *pUserLogout,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+		/// <summary>
+		/// 
+		/// </summary>
+		void cbk_OnRspFetchAuthRandCode(CSecurityFtdcAuthRandCodeField *pAuthRandCode,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
 		/// <summary>
 		/// 
 		/// </summary>
@@ -516,55 +480,11 @@ namespace RELib_LTScs
 		/// <summary>
 		/// 
 		/// </summary>
-		void cbk_OnRspQryExchange(CSecurityFtdcExchangeField *pExchange,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+		void cbk_OnRtnOrder(CSecurityFtdcOrderField *pOrder);
 		/// <summary>
 		/// 
 		/// </summary>
-		void cbk_OnRspQryInstrument(CSecurityFtdcInstrumentField *pInstrument,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
-		/// <summary>
-		/// 
-		/// </summary>
-		void cbk_OnRspQryInvestor(CSecurityFtdcInvestorField *pInvestor,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
-		/// <summary>
-		/// 
-		/// </summary>
-		void cbk_OnRspQryTradingCode(CSecurityFtdcTradingCodeField *pTradingCode,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
-		/// <summary>
-		/// 
-		/// </summary>
-		void cbk_OnRspQryTradingAccount(CSecurityFtdcTradingAccountField *pTradingAccount,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
-		/// <summary>
-		/// 
-		/// </summary>
-		void cbk_OnRspQryDepthMarketData(CSecurityFtdcDepthMarketDataField *pDepthMarketData,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
-		/// <summary>
-		/// 
-		/// </summary>
-		void cbk_OnRspQryInvestorPositionDetail(CSecurityFtdcInvestorPositionDetailField *pInvestorPositionDetail,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
-		/// <summary>
-		/// 
-		/// </summary>
-		void cbk_OnRspQryBondInterest(CSecurityFtdcBondInterestField *pBondInterest,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
-		/// <summary>
-		/// 
-		/// </summary>
-		void cbk_OnRspQryOrder(CSecurityFtdcOrderField *pOrder,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
-		/// <summary>
-		/// 
-		/// </summary>
-		void cbk_OnRspQryTrade(CSecurityFtdcTradeField *pTrade,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
-		/// <summary>
-		/// 
-		/// </summary>
-		void cbk_OnRspQryInvestorPosition(CSecurityFtdcInvestorPositionField *pInvestorPosition,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
-		/// <summary>
-		/// 
-		/// </summary>
-		void cbk_OnRtnOrder(CSecurityFtdcOrderField *pOrder,CSecurityFtdcOrderField *pOrder);
-		/// <summary>
-		/// 
-		/// </summary>
-		void cbk_OnRtnTrade(CSecurityFtdcTradeField *pTrade,CSecurityFtdcTradeField *pTrade);
+		void cbk_OnRtnTrade(CSecurityFtdcTradeField *pTrade);
 		/// <summary>
 		/// 
 		/// </summary>
@@ -573,6 +493,38 @@ namespace RELib_LTScs
 		/// 
 		/// </summary>
 		void cbk_OnErrRtnOrderAction(CSecurityFtdcOrderActionField *pOrderAction,CSecurityFtdcRspInfoField *pRspInfo);
+		/// <summary>
+		/// 
+		/// </summary>
+		void cbk_OnRspFundOutByLiber(CSecurityFtdcInputFundTransferField *pInputFundTransfer,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+		/// <summary>
+		/// 
+		/// </summary>
+		void cbk_OnRtnFundOutByLiber(CSecurityFtdcFundTransferField *pFundTransfer);
+		/// <summary>
+		/// 
+		/// </summary>
+		void cbk_OnErrRtnFundOutByLiber(CSecurityFtdcInputFundTransferField *pInputFundTransfer,CSecurityFtdcRspInfoField *pRspInfo);
+		/// <summary>
+		/// 
+		/// </summary>
+		void cbk_OnRtnFundInByBank(CSecurityFtdcFundTransferField *pFundTransfer);
+		/// <summary>
+		/// 
+		/// </summary>
+		void cbk_OnRspFundInterTransfer(CSecurityFtdcFundInterTransferField *pFundInterTransfer,CSecurityFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+		/// <summary>
+		/// 
+		/// </summary>
+		void cbk_OnRtnFundInterTransferSerial(CSecurityFtdcFundInterTransferSerialField *pFundInterTransferSerial);
+		/// <summary>
+		/// 
+		/// </summary>
+		void cbk_OnErrRtnFundInterTransfer(CSecurityFtdcFundInterTransferField *pFundInterTransfer,CSecurityFtdcRspInfoField *pRspInfo);
+		/// <summary>
+		/// 
+		/// </summary>
+		void cbk_OnRtnPlatformStateInfo(CSecurityFtdcPlatformStateInfoField *pPlatformStateInfo);
 
 		/// <summary>
 		/// 将所有回调函数地址传递给SPI
